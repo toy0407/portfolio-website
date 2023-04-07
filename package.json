@@ -1,15 +1,12 @@
 {
   "name": "portfolio-website",
-  "homepage": "https://toy0407.github.io/portfolio-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy":"gh-pages -d build"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^10.11.2",
