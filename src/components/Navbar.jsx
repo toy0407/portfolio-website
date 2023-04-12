@@ -75,7 +75,7 @@ const Navbar = () => {
         <div
           className={
             nav
-              ? `md:hidden fixed left-0 top-0 w-[65%] h-screen sm:w-[60%] md:w-[45%] bg-[#0a192f] p-10 ease-in duration-300`
+              ? `md:hidden fixed left-0 top-0 w-[80%] h-screen sm:w-[60%] md:w-[45%] bg-[#0a192f] p-10 ease-in duration-300`
               : "fixed left-[-100%] top-0 p-10 ease-in duration-300"
           }
         >
@@ -144,7 +144,7 @@ const Navbar = () => {
                 <a
                   href="https://www.linkedin.com/in/toy0407/"
                   onClick={() => setNav(false)}
-                  className="mb-4 w-[60%]"
+                  className="mb-4 w-[80%]"
                 >
                   <div
                     className="w-full rounded-full shadow-sm shadow-[#F2A2E8] p-3 cursor-pointer hover:bg-[#F2A2E8] hover:text-[#0a192f] ease-in duration-150"
@@ -154,7 +154,10 @@ const Navbar = () => {
                       alignItems: "center",
                     }}
                   >
-                    <FaLinkedinIn style={{ marginRight: "8px" }} />
+                    <FaLinkedinIn
+                      className="h-[20px] w-[20px]"
+                      style={{ marginRight: "8px" }}
+                    />
                     <p>LinkedIn</p>
                   </div>
                 </a>
@@ -162,7 +165,7 @@ const Navbar = () => {
                 <a
                   href="https://github.com/toy0407/"
                   onClick={() => setNav(false)}
-                  className="mb-4 w-[60%]"
+                  className="mb-4 w-[80%]"
                 >
                   <div
                     className="rounded-full shadow-sm shadow-[#F2A2E8] p-3 cursor-pointer hover:bg-[#F2A2E8] hover:text-[#0a192f] ease-in duration-150"
@@ -172,14 +175,17 @@ const Navbar = () => {
                       alignItems: "center",
                     }}
                   >
-                    <FaGithub style={{ marginRight: "8px" }} />
+                    <FaGithub
+                      className="h-[20px] w-[20px]"
+                      style={{ marginRight: "8px" }}
+                    />
                     <p>Github</p>
                   </div>
                 </a>
                 <a
                   href="https://twitter.com/toy_0407"
                   onClick={() => setNav(false)}
-                  className="mb-4 w-[60%]"
+                  className="mb-4 w-[80%]"
                 >
                   <div
                     className="rounded-full shadow-sm shadow-[#F2A2E8] p-3 cursor-pointer hover:bg-[#F2A2E8] hover:text-[#0a192f] ease-in duration-150"
@@ -189,7 +195,10 @@ const Navbar = () => {
                       alignItems: "center",
                     }}
                   >
-                    <FaTwitter style={{ marginRight: "8px" }} />
+                    <FaTwitter
+                      className="h-[20px] w-[20px]"
+                      style={{ marginRight: "8px" }}
+                    />
                     <p>Twitter</p>
                   </div>
                 </a>
@@ -197,7 +206,7 @@ const Navbar = () => {
                 <a
                   href="https://www.instagram.com/toy0407/"
                   onClick={() => setNav(false)}
-                  className="mb-4 w-[60%]"
+                  className="mb-4 w-[80%]"
                 >
                   <div
                     className="rounded-full shadow-sm shadow-[#F2A2E8] p-3 cursor-pointer hover:bg-[#F2A2E8] hover:text-[#0a192f] ease-in duration-150"
@@ -207,7 +216,10 @@ const Navbar = () => {
                       alignItems: "center",
                     }}
                   >
-                    <FaInstagram style={{ marginRight: "8px" }} />
+                    <FaInstagram
+                      className="h-[20px] w-[20px]"
+                      style={{ marginRight: "8px" }}
+                    />
                     <p>Instagram</p>
                   </div>
                 </a>
