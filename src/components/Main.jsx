@@ -8,8 +8,8 @@ import { motion } from "framer-motion";
 const Main = () => {
   const [text, count] = useTypewriter({
     words: [
-      "A Full Stack Developer",
-      "Guy-who-likes-coffee.jsx",
+      "A Student at Jadavpur University",
+      "someone-who-likes-motorsports.jsx",
       "<But Loves Coding More/>",
     ],
     loop: true,
@@ -19,45 +19,49 @@ const Main = () => {
     <div id="main" className="w-full h-screen text-center">
       <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
         <div>
-          <p className="uppercase text-sm tracking-[10px] text-gray-600">
+          <p className="uppercase text-sm tracking-[10px] text-gray-400 animate-fade-up">
             Let's build something together
           </p>
-          <h1 className="py-4 text-gray-700">
-            Hi! I'm <span className="text-[#5651e5]">Suvro</span>
+          <h1 className="py-4 text-gray-200 animate-fade-up delay-200">
+            Hi! I'm{" "}
+            <span className="text-[25] text-[#F2A2E8] font-cursive">
+              Suvro Bose
+            </span>
           </h1>
-          <h1 className="py-4 text-gray-500">{text}</h1>
-          <p className="py-4 text-gray-600 max-w-[70%] m-auto">
-            I'm a full stack developer specializing in Web and Mobile
-            Application Development
+          <h2 className="py-4 text-gray-200 font-thin animate-fade-up delay-400">
+            {text}
+          </h2>
+          <p className="py-4 text-gray-400 max-w-[70%] m-auto font-medium animate-fade-up delay-600">
+            Full-Stack Mobile and Web Developer
           </p>
 
-          <motion.div
+          {/* <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
             className="flex items-center justify-between max-w-[330px] m-auto py-4"
           >
             <a href="https://www.linkedin.com/in/toy0407/">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
                 <FaLinkedinIn />
               </div>
             </a>
             <a href="https://github.com/toy0407">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
                 <FaGithub />
               </div>
             </a>
             <a href="mailto:bose.suvro@gmail.com">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
                 <AiOutlineMail />
               </div>
             </a>
             <a href="/#contact">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
                 <BsFillPersonLinesFill />
               </div>
             </a>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
