@@ -56,7 +56,7 @@ const Navbar = () => {
             </li>
             {/* TODO: Add resume link */}
             <li className="ml-10 text-sm animate-fade-up delay-400">
-              <FillButton child="Resume" href="" px={3} py={2} />
+              <FillButton child="Resume" href="" padX={1} padY={0.5} />
             </li>
           </ul>
           <div onClick={handleNav} className="md:hidden">

@@ -24,8 +24,8 @@ const Contact = () => {
         <FillButton
           child="Say Hi!"
           href="mailto:bose.suvro@gmail.com"
-          px="12"
-          py="4"
+          padX={3}
+          padY={1}
         />
       </div>
     </div>
