@@ -14,7 +14,7 @@ import ScrollToTopButton from '@/components/micro/ScrollToTopButton'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  
+
   return (
     <div className='snap-y snap-mandatory'>
       <Head>
@@ -24,18 +24,20 @@ export default function Home() {
         <link rel="icon" href="/assets/logo.png" />
       </Head>
 
-      <Navbar/>
+      <Navbar />
 
-      <section><Main/></section>
+      <section><Main /></section>
 
-      <section id="about" className='snap-start my-4'><About/></section>
-      <section id="skills" className='snap-start my-4'><Skills/></section>
-      {/* <Projects/>
-      <WorkExperience/> */}
-      <section id="contact" className='snap-center my-4'><Contact/></section>
-      <SocialMediaIconsBanner/>
-      <ScrollToTopButton/>
+      <section id="about" className='snap-start'><About /></section>
+      <section id="skills" className='snap-center'><Skills /></section>
+      <section id="projects" className='snap-start'><Projects /></section>
+      {/* <WorkExperience/> */}
+      {/* <Testimonials/> */}
+      {/* <Collaborations/> */}
+      <section id="contact" className='snap-center'><Contact /></section>
+      <SocialMediaIconsBanner />
+      <ScrollToTopButton />
     </div>
-    
+
   )
 }

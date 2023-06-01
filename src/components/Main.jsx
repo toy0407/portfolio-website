@@ -32,7 +32,7 @@ const Main = () => {
             {text}
           </h2>
           <p className="py-4 text-gray-400 max-w-[70%] m-auto font-medium animate-fade-up delay-600">
-            Full-Stack Mobile and Web Developer
+            Full-Stack Web and Mobile App Developer
           </p>
 
           {/* <motion.div

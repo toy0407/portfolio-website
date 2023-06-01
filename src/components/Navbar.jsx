@@ -52,11 +52,14 @@ const Navbar = () => {
               <AnimatedUnderline child="skills" href="/#skills" />
             </li>
             <li className="ml-10 text-sm uppercase animate-fade-up delay-400">
+              <AnimatedUnderline child="projects" href="/#projects" />
+            </li>
+            <li className="ml-10 text-sm uppercase animate-fade-up delay-400">
               <AnimatedUnderline child="contact" href="/#contact" />
             </li>
             {/* TODO: Add resume link */}
             <li className="ml-10 text-sm animate-fade-up delay-400">
-              <FillButton child="Resume" href="" padX={1} padY={0.5} />
+              <FillButton child="Resume" href="https://drive.google.com/file/d/1CUShKNVN3Xa9lJmgKSmC3E6eNHEabzhL/view?usp=sharing" padX={1} padY={0.5} />
             </li>
           </ul>
           <div onClick={handleNav} className="md:hidden">
@@ -121,6 +124,14 @@ const Navbar = () => {
                   className="py-4 text-sm hover:text-[#F2A2E8] transition ease-in duration-150"
                 >
                   Skills
+                </li>
+              </Link>
+              <Link href="/#projects">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:text-[#F2A2E8] transition ease-in duration-150"
+                >
+                  Projects
                 </li>
               </Link>
               {/* <Link href="/projects">
