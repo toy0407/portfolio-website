@@ -88,8 +88,9 @@ const listItems = skills.map((element) => {
 const Skills = () => {
 
   return (
-    <div className="flex flex-col text-center md:text-left xl:flex-col max-w-[2000px] xl:px-10 min-h-screen justify-center xl:space-y-0 mx-auto items-center">
-      <div className="uppercase tracking-[10px] text-[#F2A2E8] text-xl">Skills</div>
+    <div className="flex flex-col max-w-[2000px] xl:px-10 min-h-screen justify-center mx-auto items-center">
+      <p className={`uppercase text-center pb-3 text-sm tracking-[6px] text-gray-400 animate-fade-up`}>What I have learned</p>
+      <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">Skills</h2>
       <motion.div
         variants={containerVariants}
         initial="hidden"

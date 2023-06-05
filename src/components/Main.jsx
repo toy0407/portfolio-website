@@ -34,34 +34,6 @@ const Main = () => {
           <p className="py-4 text-gray-400 max-w-[70%] m-auto font-medium animate-fade-up delay-600">
             Full-Stack Web and Mobile App Developer
           </p>
-
-          {/* <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="flex items-center justify-between max-w-[330px] m-auto py-4"
-          >
-            <a href="https://www.linkedin.com/in/toy0407/">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
-                <FaLinkedinIn />
-              </div>
-            </a>
-            <a href="https://github.com/toy0407">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
-                <FaGithub />
-              </div>
-            </a>
-            <a href="mailto:bose.suvro@gmail.com">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
-                <AiOutlineMail />
-              </div>
-            </a>
-            <a href="/#contact">
-              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-125 ease-in duration-300 hover:shadow-[#5651e5]">
-                <BsFillPersonLinesFill />
-              </div>
-            </a>
-          </motion.div> */}
         </div>
       </div>
     </div>

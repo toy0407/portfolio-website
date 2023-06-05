@@ -10,9 +10,7 @@ import FillButton from "./micro/FillButton";
 const Contact = () => {
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left max-w-7xl px-10 justify-center mx-auto items-center">
-      <p className="uppercase p-12 tracking-[10px] text-xl text-[#F2A2E8]">
-        Contact
-      </p>
+      <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">Contact</h2>
 
       <h2 className="py-8 text-gray-400">Let's Get in Touch</h2>
       <p className="py-2 text-gray-200 max-w-lg text-center">
