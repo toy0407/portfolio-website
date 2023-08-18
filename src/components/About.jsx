@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
 
-  const points = ["Specializing in crafting exceptional mobile apps for both iOS and Android platforms", "Technology Consultant intern at PwC, India", "B.E. 2023 Grad @ Jadavpur University, Kolkata, India",
+  const points = ["Specialized in crafting exceptional mobile apps for both iOS and Android platforms", "Technology Consultant intern at PwC, India", "B.E. 2023 Grad @ Jadavpur University, Kolkata, India",
     "Leetcode: Top 5% (Rating: 1840)", "Codechef: 4 Star (Rating; 1858)",];
 
   return (
@@ -34,7 +34,7 @@ const About = () => {
           viewport={{ once: false }}>
           {/* <ul className="list-disc"> */}
             {points.map((point, index) => (
-              <li className="mb-8 text-2xl font-serif font-light text-gray-400">{point}</li>
+              <li className="mb-8 text-2xl font-serif font-light text-gray-300">{point}</li>
             ))}
           {/* </ul> */}
         </motion.div>
