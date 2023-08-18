@@ -6,6 +6,7 @@ import {
   faInstagram,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
 
 const SocialMediaIconsBanner = () => {
   return (
@@ -13,6 +14,15 @@ const SocialMediaIconsBanner = () => {
       <a href="https://www.linkedin.com/in/toy0407/">
         <FontAwesomeIcon
           icon={faLinkedin}
+          size="lg"
+          height="20px"
+          width="20px"
+          className="hover:scale-125 hover:text-[#F2A2E8] transition ease-in duration-150"
+        />
+      </a>
+      <a href="https://leetcode.com/toy0407">
+        <FontAwesomeIcon
+          icon={faCode}
           size="lg"
           height="20px"
           width="20px"

@@ -11,16 +11,15 @@ const WorkExperience = () => {
 
   const experiences = [
     {
-      title: "Technical Consultant",
+      title: "Technology Consultant",
       company_name: "Pricewaterhouse Coopers LLP",
       icon: "../assets/pwc.png",
       iconBg: "#FFFFFF",
       date: "June 2022 - August 2022",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Developed and contributed to the successful implementation of the Data Lake for the client database, resulting in enhanced data accessibility and streamlined operations.",
+        "Utilized AWS Glue to perform efficient and reliable data transformations, harnessed the power of Athena for in-depth data analysis, and leveraged AWS S3 to establish a persistent catalog of diverse organizational datasets, empowering data-driven decision-making and fostering a scalable and resilient infrastructure for the organization’s analytical endeavors.",
+        "Provided in-depth insights and rectified bugs in the project, thereby reducing resource utilization by 80%, leading to enhanced system performance and operational efficiencies.",
       ],
     },
   ]
@@ -81,7 +80,7 @@ const ExperienceCard = ({ experience }) => {
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-gray-300 text-[14px] font-extralight font-serif pl-1 tracking-wider'
           >
             {point}
           </li>

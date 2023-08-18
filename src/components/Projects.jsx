@@ -7,7 +7,7 @@ const Projects = () => {
       <p className={`uppercase text-center pb-3 text-sm tracking-[6px] text-gray-400 animate-fade-up`}>What I have created</p>
       <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">Projects</h2>
 
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory">
+      <div className="w-full mx-auto flex space-x-5 overflow-x-scroll overflow-scroll p-10 snap-x snap-mandatory">
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />

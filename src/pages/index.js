@@ -29,9 +29,9 @@ export default function Home() {
       <section><Main /></section>
 
       <section id="about" className='snap-start'><About /></section>
-      <section id="skills" className='snap-center'><Skills /></section>
+      <section id="skills" className='snap-start'><Skills /></section>
       <section id="projects" className='snap-start'><Projects /></section>
-      <section id="work" className='snap-center'><WorkExperience /></section>
+      <section id="work" className='snap-start'><WorkExperience /></section>
 
       {/* <Testimonials/> */}
       {/* <Collaborations/> */}

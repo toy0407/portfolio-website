@@ -9,7 +9,7 @@ const projectCard = ({
   image,
 }) => {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 p-10 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[700px] snap-center bg-[#112240] opacity-40 hover:opacity-100 cursor-pointer transition ease-in duration-150 overflow-hidden">
+    <article className="flex flex-col rounded-lg items-center space-y-7 p-10 flex-shrink-0 w-[400px] md:w-[500px] xl:w-[600px] snap-center bg-[#112240] opacity-40 hover:opacity-100 cursor-pointer transition ease-in duration-150 overflow-hidden">
       <motion.img className="w-32 h-32 rounded-sm xl:w-[200px] xl:h-[200px] object-cover object-center" />
       <div className="px-0 md:px-10">
         <h4 className="text-4xl font-light">{projectName}</h4>
