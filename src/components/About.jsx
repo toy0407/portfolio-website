@@ -34,7 +34,7 @@ const About = () => {
           viewport={{ once: false }}>
           {/* <ul className="list-disc"> */}
             {points.map((point, index) => (
-              <li className="mb-8 text-2xl font-serif font-light text-gray-300">{point}</li>
+              <li className="mb-8 ml-8 xl:text-2xl lg:text-xl md:text-lg text-md font-serif font-light text-gray-300">{point}</li>
             ))}
           {/* </ul> */}
         </motion.div>
