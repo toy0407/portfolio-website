@@ -32,19 +32,18 @@ const Main = () => {
   ];
 
   return (
-    <div id="main" className="w-full h-screen text-center">
-      <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
-        <div>
-          <p className="uppercase text-sm tracking-[10px] text-gray-400 animate-fade-up">
+    <div id="main" className="w-full h-screen text-center max-w-[1240px] mx-auto px-4 flex flex-col justify-center items-center">
+
+          <p className="uppercase lg:text-xl text-sm tracking-[10px] text-gray-400 animate-fade-up">
             Let's build something together
           </p>
-          <h1 className="py-4 text-gray-200 animate-fade-up delay-200">
+          <h1 className="py-4 text-gray-200 lg:text-7xl text-5xl animate-fade-up delay-200">
             Hi! I'm{" "}
             <span className="text-[25] text-[#F2A2E8] font-cursive">
               Suvro Bose
             </span>
           </h1>
-          <h2 className="py-4 text-gray-200 font-thin animate-fade-up delay-400">
+          <h2 className="py-4 text-gray-200 lg:text-3xl text-2xl font-thin animate-fade-up delay-400">
             <Typewriter
               options={{
                 strings: words,
@@ -53,11 +52,9 @@ const Main = () => {
               }}
               />
           </h2>
-          <p className="py-4 text-gray-400 text-xl max-w-[70%] m-auto font-medium animate-fade-up delay-600">
+          <p className="py-4 text-gray-400 lg:text-2xl text-xl max-w-[70%] font-medium animate-fade-up delay-600">
             Full-Stack Mobile App Developer
           </p>
-        </div>
-      </div>
     </div>
   );
 };

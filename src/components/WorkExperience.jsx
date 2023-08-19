@@ -25,7 +25,7 @@ const WorkExperience = () => {
   ]
 
 
-  return <div className="min-h-screen flex justify-center items-center flex-col">
+  return <div className="min-h-screen mx-auto md:px-10 flex justify-center items-center flex-col">
     <motion.div>
       <p className={`uppercase text-center text-sm tracking-[6px] text-gray-400 animate-fade-up`}>What I have done so far</p>
       <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">Work Experience</h2>
