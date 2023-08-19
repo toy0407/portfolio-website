@@ -103,7 +103,7 @@ const Navbar = () => {
                   <div
                     className={`${
                       toggle ? "translate-y-0" : "translate-y-full"
-                    } p-6 bg-gradient-to-b ${scrolled?"from-[#112240]":"from-[#0a192f]"} to-black absolute top-[80px] right-0 h-screen w-[100%] z-10 rounded-xl transform transition-transform duration-300`}
+                    } p-6 bg-gradient-to-b ${scrolled?"from-[#112240]":"from-[#0a192f]"} to-black absolute top-[80px] right-0 h-screen w-[100%] z-10 transform transition-transform duration-300`}
                   >
                     <ul className="flex flex-col h-[80%] gap-4 items-center justify-evenly">
                       {navLinks.map((nav) => (
@@ -113,7 +113,7 @@ const Navbar = () => {
                             active === nav.title ? "text-white" : "text-gray-300"
                           } ${toggle ? `animate-fade-up delay-${nav.duration}` : ""}`}
                           onClick={() => {
-                            setToggle(false);
+                            setToggle(!toggle);
                             setActive(nav.title);
                           }}
                         >
