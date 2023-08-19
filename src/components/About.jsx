@@ -23,18 +23,18 @@ const About = () => {
             className="rounded-3xl hover:scale-105 shadow-xl ease-in duration-300"
             src="/assets/profile.jpg"
             alt="/"
-            width="400"
-            height="400"
+            width="450"
+            height="450"
           />
         </motion.div>
-        <motion.div className="flex flex-col max-w-[800px] items-start justify-evenly col-span-1 pt-2 pb-2" 
+        <motion.div className="flex flex-col max-w-[800px] items-evenly justify-center col-span-1 pt-2" 
           initial={{ translateY: 100, opacity: 0.2 }}
           whileInView={{ translateY: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: false }}>
           {/* <ul className="list-disc"> */}
             {points.map((point, index) => (
-              <li className="mb-8 ml-8 xl:text-2xl lg:text-xl md:text-lg text-md font-serif font-light text-gray-300">{point}</li>
+              <li className="mb-8 xl:text-2xl lg:text-xl md:text-lg text-md font-serif font-light text-gray-300">{point}</li>
             ))}
           {/* </ul> */}
         </motion.div>
