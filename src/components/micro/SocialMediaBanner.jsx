@@ -11,8 +11,7 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 const SocialMediaIconsBanner = () => {
   return (
     <div className="fixed left-1/2 md:left-6 transform -translate-x-1/2 bottom-4 md:bottom-0 md:w-fit md:inset-x-4 md:flex md:flex-col flex-row">
-  {/* <div className="flex flex-row md:flex-col  p-4 space-x-6 md:space-x-0 space-y-0 md:space-y-6 bg-slate-800 md:bg-transparent rounded-lg text-white animate-fade-up delay-1000"> */}
-  <div className="flex flex-row md:flex-col p-4 space-x-6 md:space-x-0 space-y-0 md:space-y-6 bg-slate-600 bg-opacity-20 backdrop-filter backdrop-blur-md backdrop-saturate-150 rounded-lg text-white animate-fade-up delay-1000">
+  <div className="flex flex-row md:flex-col p-4 space-x-6 md:space-x-0 space-y-0 md:space-y-6 md:bg-transparent bg-slate-600 bg-opacity-20 backdrop-filter backdrop-blur-md backdrop-saturate-150 md:backdrop-saturate-100 rounded-lg text-white animate-fade-up delay-1000">
     <a href="https://www.linkedin.com/in/toy0407/" target="_blank" rel="noopener noreferrer">
       <FontAwesomeIcon
         icon={faLinkedin}

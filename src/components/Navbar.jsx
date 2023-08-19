@@ -4,6 +4,7 @@ import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 import AnimatedUnderline from "./micro/AnimatedUnderline";
 import FillButton from "./micro/FillButton";
+import Hamburger from "hamburger-react";
 
 const Navbar = () => {
   const resumeLink =
@@ -58,7 +59,7 @@ const Navbar = () => {
   return (
     <nav
       className={`w-full h-20 flex items-center fixed top-0 z-20 ${
-        scrolled ? "bg-[#112240]" : "bg-transparent"
+        scrolled? "bg-[#112240]" : "bg-transparent"
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -71,9 +72,6 @@ const Navbar = () => {
           }}
         >
           <Image src="/assets/logo.png" alt="/" width="80" height="80" />
-          <p className="text-white text-[24px] font-serif cursor-pointer flex ">
-            {/* <span className="hidden sm:block">| Suvro Bose</span> */}
-          </p>
         </a>
 
         <ul className="list-none hidden md:flex flex-row items-center gap-10">
@@ -90,76 +88,44 @@ const Navbar = () => {
               <AnimatedUnderline child={nav.title} href={"#" + nav.id} />
             </li>
           ))}
-          <li className="delay-1000 animate-fade-up mr-5">
-            <FillButton child="Resume" href={resumeLink} padX={1} padY={0.5} />
-          </li>
         </ul>
+
+      
+          
         
 
 
         {/* Mobile NavBar */}
-        {/* <div className="md:hidden flex flex-1 justify-end items-center">
-          <img
-            src={toggle ? close : "/assets/logo.png"}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain"
-            onClick={() => setToggle(!toggle)}
-          />
+            <div className="md:hidden px-4 flex flex-1 justify-end items-center">  
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
-            <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-serif font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div> */}
-        <div className="md:hidden flex flex-1 justify-end items-center">
-      <img
-        src={toggle ? "/assets/close.png" : "/assets/logo.png"}
-        alt="menu"
-        className="w-[28px] h-[28px] object-contain cursor-pointer"
-        onClick={() => setToggle(!toggle)}
-      />
+              <Hamburger alt='menu' toggled={toggle} toggle={setToggle}/>
 
-      <div
-        className={`${
-          toggle ? "translate-x-0" : "translate-x-full"
-        } p-6 bg-gradient-to-b from-gray-900 to-black absolute top-0 right-0 h-screen w-[80%] z-10 rounded-xl transform transition-transform duration-300`}
-      >
-        <ul className="list-none flex flex-col gap-4">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`font-serif font-medium cursor-pointer text-[16px] ${
-                active === nav.title ? "text-white" : "text-gray-300"
-              }`}
-              onClick={() => {
-                setToggle(false);
-                setActive(nav.title);
-              }}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+                  <div
+                    className={`${
+                      toggle ? "translate-y-0" : "translate-y-full"
+                    } p-6 bg-gradient-to-b ${scrolled?"from-[#112240]":"from-[#0a192f]"} to-black absolute top-[80px] right-0 h-screen w-[100%] z-10 rounded-xl transform transition-transform duration-300`}
+                  >
+                    <ul className="flex flex-col h-[80%] gap-4 items-center justify-evenly">
+                      {navLinks.map((nav) => (
+                        <li
+                          key={nav.id}
+                          className={`font-mono font-semibold cursor-pointer text-3xl ${
+                            active === nav.title ? "text-white" : "text-gray-300"
+                          } ${toggle ? `animate-fade-up delay-${nav.duration}` : ""}`}
+                          onClick={() => {
+                            setToggle(false);
+                            setActive(nav.title);
+                          }}
+                        >
+                          <a href={`#${nav.id}`}>{nav.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+            </div>
+            <div className="delay-1000 md:animate-fade-up mr-5">
+                  <FillButton child="Resume" href={resumeLink} padX={1} padY={0.5} />
+            </div>
       </div>
     </nav>
   );
