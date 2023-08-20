@@ -2,17 +2,6 @@ import React, { useEffect, useState } from "react";
 
 
 const FillButton = ({ child, href, padX, padY }) => {
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = () => {
-    setClicked(true);
-    // Perform any other click-related actions here
-  };
-
-  const handleBlur = () => {
-    setClicked(false);
-  };
-
 
   return (
     <a
@@ -24,8 +13,6 @@ const FillButton = ({ child, href, padX, padY }) => {
         paddingBottom: `${padY}rem`,
       }}
       href={href}
-      onClick={handleClick}
-      onBlur={handleBlur}
     >
       {child}
     </a>
