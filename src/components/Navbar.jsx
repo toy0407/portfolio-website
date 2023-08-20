@@ -56,6 +56,14 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (toggle) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [toggle]);
+
   return (
     <nav
       className={`w-full h-20 flex items-center fixed top-0 z-20 ${
@@ -98,7 +106,9 @@ const Navbar = () => {
         {/* Mobile NavBar */}
             <div className="md:hidden px-4 flex flex-1 justify-end items-center">  
 
-              <Hamburger alt='menu' toggled={toggle} toggle={setToggle}/>
+              <Hamburger alt='menu' toggled={toggle} toggle={()=>{
+                setToggle(!toggle);
+              }}/>
 
                   <div
                     className={`${
