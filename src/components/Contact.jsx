@@ -1,16 +1,12 @@
-import Image from "next/image";
 import React from "react";
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
-import Link from "next/link";
 import FillButton from "./micro/FillButton";
 
 const Contact = () => {
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left max-w-7xl px-10 justify-center mx-auto items-center">
-      <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">Contact</h2>
+      <h2 className="text-center font-thin tracking-[4px] text-[#F2A2E8]">
+        Contact
+      </h2>
 
       <h2 className="py-8 text-gray-400">Let's Get in Touch</h2>
       <p className="py-2 text-gray-200 max-w-lg text-center">

@@ -67,7 +67,7 @@ const Navbar = () => {
   return (
     <nav
       className={`w-full h-20 flex items-center fixed top-0 z-20 ${
-        scrolled? "bg-[#112240]" : "bg-transparent"
+        scrolled ? "bg-[#112240]" : "bg-transparent"
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -98,44 +98,44 @@ const Navbar = () => {
           ))}
         </ul>
 
-      
-          
-        
-
-
         {/* Mobile NavBar */}
-            <div className="md:hidden px-4 flex flex-1 justify-end items-center">  
+        <div className="md:hidden px-4 flex flex-1 justify-end items-center">
+          <Hamburger
+            alt="menu"
+            toggled={toggle}
+            toggle={() => {
+              setToggle(!toggle);
+            }}
+          />
 
-              <Hamburger alt='menu' toggled={toggle} toggle={()=>{
-                setToggle(!toggle);
-              }}/>
-
-                  <div
-                    className={`${
-                      toggle ? "translate-y-0" : "translate-y-full"
-                    } p-6 bg-gradient-to-b ${scrolled?"from-[#112240]":"from-[#0a192f]"} to-black absolute top-[80px] right-0 h-screen w-[100%] z-10 transform transition-transform duration-300`}
-                  >
-                    <ul className="flex flex-col h-[80%] gap-4 items-center justify-evenly">
-                      {navLinks.map((nav) => (
-                        <li
-                          key={nav.id}
-                          className={`font-mono font-semibold cursor-pointer text-3xl ${
-                            active === nav.title ? "text-white" : "text-gray-300"
-                          } ${toggle ? `animate-fade-up delay-${nav.duration}` : ""}`}
-                          onClick={() => {
-                            setToggle(!toggle);
-                            setActive(nav.title);
-                          }}
-                        >
-                          <a href={`#${nav.id}`}>{nav.title}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-            </div>
-            <div className="delay-1000 md:animate-fade-up mr-5">
-                  <FillButton child="Resume" href={resumeLink} padX={1} padY={0.5} />
-            </div>
+          <div
+            className={`${
+              toggle ? "translate-y-0" : "translate-y-full"
+            } p-6 bg-gradient-to-b ${
+              scrolled ? "from-[#112240]" : "from-[#0a192f]"
+            } to-black absolute top-[80px] right-0 h-screen w-[100%] z-10 transform transition-transform duration-300`}
+          >
+            <ul className="flex flex-col h-[80%] gap-4 items-center justify-evenly">
+              {navLinks.map((nav) => (
+                <li
+                  key={nav.id}
+                  className={`font-mono font-semibold cursor-pointer text-3xl ${
+                    active === nav.title ? "text-white" : "text-gray-300"
+                  } ${toggle ? `animate-fade-up delay-${nav.duration}` : ""}`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(nav.title);
+                  }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="delay-1000 md:animate-fade-up mr-5">
+          <FillButton child="Resume" href={resumeLink} padX={1} padY={0.5} />
+        </div>
       </div>
     </nav>
   );

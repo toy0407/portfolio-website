@@ -1,9 +1,5 @@
 import React from "react";
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { motion } from "framer-motion";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 
 const Main = () => {
   const words = [
@@ -16,7 +12,7 @@ const Main = () => {
     "UI/UX Wizard by Day, Motorsport Enthusiast by Night",
     "Fuelled by Java, Driven by Adrenaline",
     "Turning Coffee into Code && Speed",
-    "Swiping Screens && Steering Wheels" ,
+    "Swiping Screens && Steering Wheels",
     "Revving Up Functions, Revving Around Tracks",
     "Full Stack in the Streets, Full Throttle on the Tracks",
     "404: Sleep Not Found",
@@ -28,33 +24,35 @@ const Main = () => {
     "Life's a Race, Make Every Code Line Count",
     "Switching Gears && Switching Frameworks",
     "Chasing 200 OK && 200 MPH Simultaneously",
-    "Born to Code, Driven to Excel"
+    "Born to Code, Driven to Excel",
   ];
 
   return (
-    <div id="main" className="w-full h-screen text-center max-w-[1240px] mx-auto px-4 flex flex-col justify-center items-center">
-
-          <p className="uppercase lg:text-xl text-sm tracking-[10px] text-gray-400 animate-fade-up">
-            Let's build something together
-          </p>
-          <h1 className="py-4 text-gray-200 lg:text-7xl text-5xl animate-fade-up delay-200">
-            Hi! I'm{" "}
-            <span className="text-[25] text-[#F2A2E8] font-cursive">
-              Suvro Bose
-            </span>
-          </h1>
-          <h2 className="py-4 text-gray-200 lg:text-3xl text-2xl font-thin animate-fade-up delay-400">
-            <Typewriter
-              options={{
-                strings: words,
-                autoStart: true,
-                loop: true,
-              }}
-              />
-          </h2>
-          <p className="py-4 text-gray-400 lg:text-2xl text-xl max-w-[70%] font-medium animate-fade-up delay-600">
-            Full-Stack Mobile App Developer
-          </p>
+    <div
+      id="main"
+      className="w-full h-screen text-center max-w-[1240px] mx-auto px-4 flex flex-col justify-center items-center"
+    >
+      <p className="uppercase lg:text-xl text-sm tracking-[10px] text-gray-400 animate-fade-up">
+        Let's build something together
+      </p>
+      <h1 className="py-4 text-gray-200 lg:text-7xl text-5xl animate-fade-up delay-200">
+        Hi! I'm{" "}
+        <span className="text-[25] text-[#F2A2E8] font-cursive">
+          Suvro Bose
+        </span>
+      </h1>
+      <h2 className="py-4 text-gray-200 lg:text-3xl text-2xl font-thin animate-fade-up delay-400">
+        <Typewriter
+          options={{
+            strings: words,
+            autoStart: true,
+            loop: true,
+          }}
+        />
+      </h2>
+      <p className="py-4 text-gray-400 lg:text-2xl text-xl max-w-[70%] font-medium animate-fade-up delay-600">
+        Full-Stack Mobile App Developer
+      </p>
     </div>
   );
 };
