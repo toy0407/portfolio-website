@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Code2,
+  Instagram,
+} from "lucide-react";
 import { portfolioData } from "@/data/portfolio.data";
 
 const iconMap = {
@@ -9,6 +16,8 @@ const iconMap = {
   linkedin: Linkedin,
   twitter: Twitter,
   mail: Mail,
+  leetcode: Code2,
+  instagram: Instagram,
 };
 
 export const SocialMediaBanner = () => {

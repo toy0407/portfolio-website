@@ -1,11 +1,24 @@
 import { desc } from "framer-motion/client";
 
 const email = "bose.suvro@gmail.com";
+const phone = "+91 8250-937-819";
 
 export const portfolioData = {
   personal: {
     name: "Suvro Bose",
+    title: "Software Engineer | Full-Stack Developer",
     email: email,
+    phone: phone,
+  },
+  navbar: {
+    menuItems: [
+      "About",
+      "Skills",
+      "Projects",
+      "Experience",
+      // "Testimonials",
+      "Contact",
+    ],
   },
   timeline: {
     title: "My Journey So Far",
@@ -42,14 +55,19 @@ export const portfolioData = {
   },
   socials: [
     {
-      name: "GitHub",
-      icon: "github",
-      url: "https://github.com/toy0407",
-    },
-    {
       name: "LinkedIn",
       icon: "linkedin",
       url: "https://www.linkedin.com/in/toy0407/",
+    },
+    {
+      name: "LeetCode",
+      icon: "leetcode",
+      url: "https://leetcode.com/toy0407",
+    },
+    {
+      name: "GitHub",
+      icon: "github",
+      url: "https://github.com/toy0407",
     },
     {
       name: "Twitter",
@@ -57,16 +75,16 @@ export const portfolioData = {
       url: "https://twitter.com/toy_0407",
     },
     {
-      name: "Email",
-      icon: "mail",
-      url: `mailto:${email}`,
+      name: "Instagram",
+      icon: "instagram",
+      url: "https://www.instagram.com/toy0407",
     },
   ],
   cta: {
     title: "Let's Build Something Amazing",
     description:
       "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
-    buttonText: "Get In Touch",
+    buttonText: "Say Hi!",
     buttonLink: `mailto:${email}`,
   },
 };

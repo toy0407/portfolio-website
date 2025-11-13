@@ -5,6 +5,8 @@ import About from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import Hero from "@/components/sections/HeroSection";
+import ProjectSection from "@/components/sections/ProjectSection";
+import SkillSection from "@/components/sections/SkillSection";
 
 export default function Home() {
   return (
@@ -13,10 +15,8 @@ export default function Home() {
       <SocialMediaBanner />
       <Hero />
       <About />
-      <section className="h-[300px] w-full bg-red-700" />
-      <section className="h-[300px] w-full bg-green-700" />
-      <section className="h-[300px] w-full bg-purple-700" />
-      <section className="h-[300px] w-full bg-yellow-700" />
+      <SkillSection />
+      <ProjectSection />
       <ExperienceSection />
       <ContactSection />
       <Footer />

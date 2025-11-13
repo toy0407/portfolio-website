@@ -2,7 +2,7 @@
 
 import { portfolioData } from "@/data/portfolio.data";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Mail, Phone, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { Button } from "../ui/button";
 
@@ -13,48 +13,49 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center py-20 px-4 bg-card/30 scroll-snap-section"
+      className="min-h-screen flex items-center py-20 px-4 scroll-snap-section"
     >
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-5xl">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-primary p-12 md:p-16 text-center border border-primary/30 shadow-purple-glow"
+          transition={{ duration: 0.8, type: "spring" }}
+          className="relative overflow-hidden rounded-3xl bg-card/80 backdrop-blur-apple p-12 md:p-16 border border-primary/20 shadow-elevated"
         >
-          {/* Animated background */}
+          {/* Subtle animated background */}
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
+              scale: [1, 1.1, 1],
+              opacity: [0.1, 0.15, 0.1],
             }}
             transition={{
-              duration: 20,
+              duration: 15,
               repeat: Infinity,
-              ease: "linear",
+              ease: "easeInOut",
             }}
-            className="absolute -top-20 -right-20 w-64 h-64 bg-accent/20 rounded-full blur-3xl"
+            className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [360, 180, 0],
+              scale: [1.1, 1, 1.1],
+              opacity: [0.15, 0.1, 0.15],
             }}
             transition={{
-              duration: 20,
+              duration: 15,
               repeat: Infinity,
-              ease: "linear",
+              ease: "easeInOut",
+              delay: 7.5,
             }}
-            className="absolute -bottom-20 -left-20 w-64 h-64 bg-secondary/20 rounded-full blur-3xl"
+            className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-accent/20 to-primary/20 rounded-full blur-3xl"
           />
 
           <div className="relative z-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl md:text-5xl font-bold mb-6"
+              transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+              className="text-4xl md:text-6xl font-semibold mb-4 pb-2 text-center bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent"
             >
               {portfolioData.cta.title}
             </motion.h2>
@@ -62,30 +63,67 @@ export const ContactSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl text-foreground/90 mb-8 max-w-2xl mx-auto"
+              transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+              className="text-base md:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto text-center font-normal leading-relaxed"
             >
               {portfolioData.cta.description}
             </motion.p>
 
+            {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+              className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12"
             >
-              <Button
-                size="lg"
-                asChild
-                className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-gold-glow hover:shadow-xl transition-all text-lg px-8 group"
-              >
-                <a href={portfolioData.cta.buttonLink}>
-                  {portfolioData.cta.buttonText}
-                  <ArrowRight
-                    className="ml-2 group-hover:translate-x-1 transition-transform"
-                    size={20}
-                  />
+              <div className="flex items-center gap-3 text-foreground/80">
+                <Mail className="text-accent" size={20} />
+                <a
+                  href={`mailto:${portfolioData.personal.email}`}
+                  className="font-medium hover:text-accent transition-colors duration-300"
+                >
+                  {portfolioData.personal.email}
                 </a>
-              </Button>
+              </div>
+
+              {portfolioData.personal.phone && (
+                <div className="flex items-center gap-3 text-foreground/80">
+                  <Phone className="text-accent" size={20} />
+                  <a
+                    href={`tel:${portfolioData.personal.phone}`}
+                    className="font-medium hover:text-accent transition-colors duration-300"
+                  >
+                    {portfolioData.personal.phone}
+                  </a>
+                </div>
+              )}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
+              className="flex justify-center"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button
+                  size="lg"
+                  asChild
+                  className="bg-gradient-to-r from-accent to-accent/90 text-accent-foreground hover:from-accent/90 hover:to-accent/80 shadow-gold-glow hover:shadow-elevated transition-all duration-300 font-medium text-base px-8 group"
+                >
+                  <a href={portfolioData.cta.buttonLink}>
+                    {portfolioData.cta.buttonText}
+                    <ArrowRight
+                      className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                      size={20}
+                    />
+                  </a>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>

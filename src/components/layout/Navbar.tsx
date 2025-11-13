@@ -16,17 +16,10 @@ import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { ResponsiveModal } from "../custom/responsive_modal.custom";
+import { portfolioData } from "@/data/portfolio.data";
 
-// TODO: Change to Resizeable Navbar from Aceternity UI
 export default function CustomNavBar() {
-  const menuItems = [
-    "About",
-    "Skills",
-    "Projects",
-    "Work Experience",
-    "Testimonials",
-    "Contact",
-  ];
+  const menuItems = portfolioData.navbar.menuItems;
 
   // State to handle active nav item and drawer/dialog open state
   const [activeItem, setActiveItem] = useState(null);
@@ -74,7 +67,7 @@ export default function CustomNavBar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="md:hidden flex"
         />
-        <NavbarItem className="md:flex hidden">
+        {/* <NavbarItem className="md:flex hidden">
           <Button
             isIconOnly
             variant="bordered"
@@ -83,7 +76,7 @@ export default function CustomNavBar() {
           >
             {theme === "light" ? <SunIcon /> : <MoonIcon />}
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <ResponsiveModal
             title="View Resume"
@@ -92,6 +85,7 @@ export default function CustomNavBar() {
             showTextBox={true}
             textBoxPlaceholder="Enter your email"
             onCancel={() => {}}
+            // TODO: Add actual submit handler
             onSubmit={() => {}}
           />
         </NavbarItem>

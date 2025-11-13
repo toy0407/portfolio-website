@@ -100,7 +100,7 @@ export function ResponsiveModal({
         <RainbowButton
           color="primary"
           onClick={toggleOpen}
-          className="md:max-w-none md:max-h-none max-w-[80px] max-h-[40px] md:text-base text-sm"
+          className="md:max-w-none md:max-h-none max-w-[80px] max-h-[40px] md:text-base text-sm dark:text-black"
         >
           {openButtonText}
         </RainbowButton>

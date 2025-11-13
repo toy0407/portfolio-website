@@ -34,19 +34,22 @@ export default function ExperienceSection() {
       title: item.title,
       content: (
         <div className="flex items-start gap-4 md:gap-6">
-          <div className="flex-shrink-0 h-24 w-24 lg:h-32 md:w-32 rounded-full overflow-hidden dark:bg-neutral-50">
+          <div className="flex-shrink-0 h-20 w-20 md:h-24 md:w-24 rounded-2xl overflow-hidden dark:bg-neutral-50 backdrop-blur-apple border border-primary/10 shadow-subtle">
             {logo}
           </div>
           <div className="flex-1">
-            <h4 className="text-3xl lg:text-4xl font-serif mb-4">
+            <h4 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground">
               {item.content.title}
             </h4>
-            <p className="text-base lg:text-2xl font-light text-neutral-700 dark:text-neutral-300 mb-6">
+            <p className="text-base md:text-lg font-normal text-muted-foreground mb-6 leading-relaxed">
               {item.content.subtitle}
             </p>
-            <ul className="list-disc list-inside text-md lg:text-xl font-normal text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <ul className="space-y-2 text-sm md:text-base font-normal text-muted-foreground/90 leading-relaxed">
               {item.content.description.map((desc, index) => (
-                <li key={index}>{desc}</li>
+                <li key={index} className="flex items-start gap-3">
+                  <span className="text-accent flex-shrink-0">•</span>
+                  <span>{desc}</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -56,12 +59,12 @@ export default function ExperienceSection() {
   }
 
   return (
-    <div className="relative w-full overflow-clip">
+    <section id="experience" className="relative w-full overflow-clip">
       <Timeline
         title={portfolioData.timeline.title}
         subtitle={portfolioData.timeline.subtitle}
         data={timelineData}
       />
-    </div>
+    </section>
   );
 }
