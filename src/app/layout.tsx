@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AnalyticsTracker } from "@/components/analytics/AnalyticsTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,15 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${nunito.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${nunito.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <AnalyticsTracker />
           {children}
         </ThemeProvider>
       </body>

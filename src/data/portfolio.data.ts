@@ -9,6 +9,12 @@ export const portfolioData = {
     title: "Software Engineer | Full-Stack Developer",
     email: email,
     phone: phone,
+    logo: "/assets/logo.png",
+    resume:
+      "https://drive.google.com/file/d/1mnbc9_YAspMWtGrSG3luoA7InHqL3NW8/view?usp=drive_link",
+  },
+  analytics: {
+    trackablePages: ["/"],
   },
   navbar: {
     menuItems: [
