@@ -57,6 +57,8 @@ export const portfolioData = {
     trackablePages: ["/"],
   },
   skills: {
+    title: "My Skills",
+    subtitle: "A showcase of my technical proficiencies and tools I excel at.",
     categories: [
       {
         key: "languages",
@@ -135,6 +137,63 @@ export const portfolioData = {
           { label: "LangChain", icon: SiLangchain },
           { label: "Vector DBs", icon: FaVectorSquare },
         ],
+      },
+    ],
+  },
+  projects: {
+    title: "Featured Projects",
+    subtitle:
+      "A showcase of applications and tools I've built using my skills.",
+    data: [
+      {
+        id: 1,
+        title: "E-Commerce Platform",
+        description:
+          "A full-stack e-commerce solution with real-time inventory management, payment processing, and admin dashboard. Built with modern React architecture and scalable backend.",
+        image: "/assets/projects/ecommerce.jpg",
+        technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
+        sourceCode: "https://github.com/toy0407/ecommerce-platform",
+        liveUrl: "https://ecommerce-demo.vercel.app",
+        featured: true,
+      },
+      {
+        id: 2,
+        title: "AI Chat Assistant",
+        description:
+          "An intelligent chatbot powered by OpenAI GPT-4 with custom knowledge base integration, conversation memory, and real-time streaming responses.",
+        image: "/assets/projects/chat-ai.jpg",
+        technologies: [
+          "Next.js",
+          "OpenAI API",
+          "LangChain",
+          "Vector DB",
+          "Supabase",
+        ],
+        sourceCode: "https://github.com/toy0407/ai-chat-assistant",
+        liveUrl: "https://chat-ai-demo.vercel.app",
+        featured: false,
+      },
+      {
+        id: 3,
+        title: "Task Management App",
+        description:
+          "A collaborative project management tool with real-time updates, team workspaces, and advanced filtering. Features drag-and-drop Kanban boards and time tracking.",
+        image: "/assets/projects/task-manager.jpg",
+        technologies: ["Flutter", "Firebase", "Node.js", "WebSockets"],
+        sourceCode: "https://github.com/toy0407/task-manager",
+        liveUrl: null,
+        featured: false,
+      },
+      {
+        id: 4,
+        title: "Analytics Dashboard",
+        description:
+          "A comprehensive analytics platform with interactive charts, real-time data visualization, and custom reporting. Handles millions of data points with optimized performance.",
+        image: "/assets/projects/analytics.jpg",
+        technologies: ["React", "D3.js", "Express", "Redis", "Docker"],
+        sourceCode: "https://github.com/toy0407/analytics-dashboard",
+        liveUrl: "https://analytics-demo.vercel.app",
+        featured: false,
       },
     ],
   },

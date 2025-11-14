@@ -187,10 +187,14 @@ function CategoryCard({
   );
 }
 
+// TODO: Fix lag in animations/scroll performance
 export default function SkillSection() {
   const categories = portfolioData.skills?.categories ?? [];
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const title = portfolioData.skills?.title;
+  const subtitle = portfolioData.skills?.subtitle;
 
   return (
     <section
@@ -214,7 +218,7 @@ export default function SkillSection() {
               damping: 20,
             }}
           >
-            {"Skills".split("").map((char, index) => (
+            {title?.split("").map((char, index) => (
               <motion.span
                 key={`skills-${index}`}
                 initial={{ opacity: 0, y: 50 }}
@@ -238,7 +242,7 @@ export default function SkillSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            A curated set of technologies I use across the stack.
+            {subtitle}
           </motion.p>
         </div>
 
