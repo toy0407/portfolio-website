@@ -2,9 +2,18 @@
 
 import { portfolioData } from "@/data/portfolio.data";
 import { cn } from "@/utils/tailwind.utils";
-import { CircleIcon } from "@radix-ui/react-icons";
+import { FaCircle } from "react-icons/fa";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { IconType } from "react-icons/lib";
+
+interface Category {
+  key: string;
+  label: string;
+  description: string;
+  items: Array<{ label: string; icon?: IconType }>;
+  icon?: IconType;
+}
 
 function Pill({
   label,
@@ -12,10 +21,10 @@ function Pill({
   index,
 }: {
   label: string;
-  icon?: any;
+  icon?: IconType;
   index: number;
 }) {
-  const Icon = icon ?? CircleIcon;
+  const Icon = icon ?? FaCircle;
   return (
     <motion.span
       initial={{ opacity: 0, scale: 0.8, y: 10 }}
@@ -61,11 +70,11 @@ function CategoryCard({
 }: {
   title: string;
   description: string;
-  items: Array<{ label: string; icon?: string }>;
-  icon?: any;
+  items: Array<{ label: string; icon?: IconType }>;
+  icon?: IconType;
   cardIndex: number;
 }) {
-  const Icon = icon ?? CircleIcon;
+  const Icon = icon ?? FaCircle;
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, margin: "-100px" });
 
@@ -179,7 +188,7 @@ function CategoryCard({
 }
 
 export default function SkillSection() {
-  const categories = (portfolioData as any).skills?.categories ?? [];
+  const categories = portfolioData.skills?.categories ?? [];
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -235,7 +244,7 @@ export default function SkillSection() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
-          {categories.map((cat: any, index: number) => (
+          {categories.map((cat: Category, index: number) => (
             <CategoryCard
               key={cat.key}
               title={cat.label}
