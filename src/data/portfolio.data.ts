@@ -1,3 +1,57 @@
+import {
+  LuBraces,
+  LuBrain,
+  LuCloud,
+  LuDatabase,
+  LuMonitor,
+  LuServer,
+} from "react-icons/lu";
+import {
+  FaJava,
+  FaAndroid,
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaAws,
+  FaVectorSquare,
+  FaRobot,
+} from "react-icons/fa";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiDart,
+  SiTailwindcss,
+  SiRedux,
+  SiFramer,
+  SiExpress,
+  SiNestjs,
+  SiGraphql,
+  SiPostgresql,
+  SiMongodb,
+  SiMysql,
+  SiRedis,
+  SiDocker,
+  SiKubernetes,
+  SiTensorflow,
+  SiScikitlearn,
+  SiFlutter,
+  SiServerless,
+  SiSpringboot,
+  SiFirebase,
+  SiSupabase,
+  SiApachekafka,
+  SiVercel,
+  SiGithubactions,
+  SiOpenai,
+  SiLangchain,
+} from "react-icons/si";
+import { RiFirebaseFill, RiNextjsFill } from "react-icons/ri";
+import { TbApi } from "react-icons/tb";
+import { DiRedis } from "react-icons/di";
+import { BiNetworkChart } from "react-icons/bi";
+
 const email = "bose.suvro@gmail.com";
 const phone = "+91 8250-937-819";
 
@@ -13,6 +67,88 @@ export const portfolioData = {
   },
   analytics: {
     trackablePages: ["/"],
+  },
+  skills: {
+    categories: [
+      {
+        key: "languages",
+        label: "Languages",
+        description: "Core programming languages I use to build.",
+        icon: LuBraces,
+        items: [
+          { label: "Java", icon: FaJava },
+          { label: "Dart", icon: SiDart },
+          { label: "TypeScript", icon: SiTypescript },
+          { label: "JavaScript", icon: SiJavascript },
+        ],
+      },
+      {
+        key: "frontend",
+        label: "Frontend",
+        description: "Frameworks and tools for delightful UIs.",
+        icon: LuMonitor,
+        items: [
+          { label: "Flutter", icon: SiFlutter },
+          { label: "Next.js", icon: RiNextjsFill },
+          { label: "React", icon: FaReact },
+          { label: "Tailwind CSS", icon: SiTailwindcss },
+        ],
+      },
+      {
+        key: "backend",
+        label: "Backend",
+        description: "Server-side frameworks and API tooling.",
+        icon: LuServer,
+        items: [
+          { label: "Node.js", icon: FaNodeJs },
+          { label: "Express", icon: SiExpress },
+          { label: "Serverless", icon: SiServerless },
+          { label: "Spring Boot", icon: SiSpringboot },
+          { label: "Firebase", icon: RiFirebaseFill },
+          { label: "Supabase", icon: SiSupabase },
+          { label: "Kafka", icon: SiApachekafka },
+          { label: "REST APIs", icon: TbApi },
+        ],
+      },
+      {
+        key: "databases",
+        label: "Databases",
+        description: "Data stores used across projects.",
+        icon: LuDatabase,
+        items: [
+          { label: "PostgreSQL", icon: SiPostgresql },
+          { label: "MongoDB", icon: SiMongodb },
+          { label: "MySQL", icon: SiMysql },
+          { label: "Redis", icon: DiRedis },
+        ],
+      },
+      {
+        key: "devopsAndCloud",
+        label: "DevOps & Cloud",
+        description: "Infra, CI/CD, and cloud platforms.",
+        icon: LuCloud,
+        items: [
+          { label: "Docker", icon: SiDocker },
+          { label: "Kubernetes", icon: SiKubernetes },
+          { label: "AWS", icon: FaAws },
+          { label: "Vercel", icon: SiVercel },
+          { label: "GitHub Actions", icon: SiGithubactions },
+        ],
+      },
+      {
+        key: "ai",
+        label: "AI",
+        description: "AI/ML tools and concepts.",
+        icon: LuBrain,
+        items: [
+          { label: "LLM", icon: BiNetworkChart },
+          { label: "RAG", icon: FaRobot },
+          { label: "OpenAI API", icon: SiOpenai },
+          { label: "LangChain", icon: SiLangchain },
+          { label: "Vector DBs", icon: FaVectorSquare },
+        ],
+      },
+    ],
   },
   navbar: {
     menuItems: [

@@ -2,7 +2,7 @@
 
 import { portfolioData } from "@/data/portfolio.data";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, ArrowRight } from "lucide-react";
+import { LuMail, LuPhone, LuArrowRight } from "react-icons/lu";
 import { useRef } from "react";
 import { Button } from "../ui/button";
 
@@ -77,7 +77,7 @@ export const ContactSection = () => {
               className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12"
             >
               <div className="flex items-center gap-3 text-foreground/80">
-                <Mail className="text-accent" size={20} />
+                <LuMail className="text-accent" size={20} />
                 <a
                   href={`mailto:${portfolioData.personal.email}`}
                   className="font-medium hover:text-accent transition-colors duration-300"
@@ -88,7 +88,7 @@ export const ContactSection = () => {
 
               {portfolioData.personal.phone && (
                 <div className="flex items-center gap-3 text-foreground/80">
-                  <Phone className="text-accent" size={20} />
+                  <LuPhone className="text-accent" size={20} />
                   <a
                     href={`tel:${portfolioData.personal.phone}`}
                     className="font-medium hover:text-accent transition-colors duration-300"
@@ -117,7 +117,7 @@ export const ContactSection = () => {
                 >
                   <a href={portfolioData.cta.buttonLink}>
                     {portfolioData.cta.buttonText}
-                    <ArrowRight
+                    <LuArrowRight
                       className="ml-2 group-hover:translate-x-1 transition-transform duration-300"
                       size={20}
                     />

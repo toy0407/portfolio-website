@@ -2,22 +2,22 @@
 
 import { motion } from "framer-motion";
 import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Code2,
-  Instagram,
-} from "lucide-react";
+  LuGithub,
+  LuLinkedin,
+  LuTwitter,
+  LuMail,
+  LuCodeXml,
+  LuInstagram,
+} from "react-icons/lu";
 import { portfolioData } from "@/data/portfolio.data";
 
 const iconMap = {
-  github: Github,
-  linkedin: Linkedin,
-  twitter: Twitter,
-  mail: Mail,
-  leetcode: Code2,
-  instagram: Instagram,
+  github: LuGithub,
+  linkedin: LuLinkedin,
+  twitter: LuTwitter,
+  mail: LuMail,
+  leetcode: LuCodeXml,
+  instagram: LuInstagram,
 };
 
 export const SocialMediaBanner = () => {
