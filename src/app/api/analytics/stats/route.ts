@@ -1,9 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
-import { readFile } from "fs/promises";
-import { join } from "path";
-import { existsSync } from "fs";
+import getDb from "@/utils/mongodb";
 
 export async function GET(request: NextRequest) {
   try {
@@ -18,10 +16,14 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const analyticsDir = join(process.cwd(), "analytics");
-    const metadataPath = join(analyticsDir, "metadata.json");
+    const db = await getDb();
+    const metadataCol = db.collection("metadata");
+    const metadata = (await metadataCol.findOne({})) as Record<
+      string,
+      unknown
+    > | null;
 
-    if (!existsSync(metadataPath)) {
+    if (!metadata || Object.keys(metadata).length === 0) {
       return NextResponse.json(
         {
           totalVisits: 0,
@@ -33,40 +35,48 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const metadataContent = await readFile(metadataPath, "utf-8");
-    const metadata = JSON.parse(metadataContent);
+    const browserBreakdown =
+      (metadata.browserBreakdown as Record<string, number>) || {};
+    const deviceBreakdown =
+      (metadata.deviceBreakdown as Record<string, number>) || {};
+    const peakHours = (metadata.peakHours as Record<string, number>) || {};
 
-    // Calculate additional stats
+    const uniqueVisitorsCount = Array.isArray(metadata.uniqueVisitors)
+      ? (metadata.uniqueVisitors as string[]).length
+      : 0;
+    const totalVisits = Number(
+      (metadata as Record<string, unknown>)["totalVisits"] || 0
+    );
+    const totalResumeClicks = Number(
+      (metadata as Record<string, unknown>)["totalResumeClicks"] || 0
+    );
+    const conversionRate =
+      totalVisits > 0
+        ? ((totalResumeClicks / totalVisits) * 100).toFixed(2) + "%"
+        : "0%";
+
     const stats = {
       ...metadata,
-      uniqueVisitors: metadata.uniqueVisitors?.length || 0,
-      conversionRate:
-        metadata.totalVisits > 0
-          ? ((metadata.totalResumeClicks / metadata.totalVisits) * 100).toFixed(
-              2
-            ) + "%"
-          : "0%",
-      topBrowser: Object.keys(metadata.browserBreakdown || {}).reduce(
-        (a, b) =>
-          (metadata.browserBreakdown[a] || 0) >
-          (metadata.browserBreakdown[b] || 0)
-            ? a
-            : b,
-        "N/A"
-      ),
-      topDevice: Object.keys(metadata.deviceBreakdown || {}).reduce(
-        (a, b) =>
-          (metadata.deviceBreakdown[a] || 0) >
-          (metadata.deviceBreakdown[b] || 0)
-            ? a
-            : b,
-        "N/A"
-      ),
-      mostActiveHour: Object.keys(metadata.peakHours || {}).reduce(
-        (a, b) =>
-          (metadata.peakHours[a] || 0) > (metadata.peakHours[b] || 0) ? a : b,
-        "N/A"
-      ),
+      uniqueVisitors: uniqueVisitorsCount,
+      conversionRate,
+      topBrowser:
+        Object.keys(browserBreakdown).length > 0
+          ? Object.keys(browserBreakdown).reduce((a, b) =>
+              (browserBreakdown[a] || 0) > (browserBreakdown[b] || 0) ? a : b
+            )
+          : "N/A",
+      topDevice:
+        Object.keys(deviceBreakdown).length > 0
+          ? Object.keys(deviceBreakdown).reduce((a, b) =>
+              (deviceBreakdown[a] || 0) > (deviceBreakdown[b] || 0) ? a : b
+            )
+          : "N/A",
+      mostActiveHour:
+        Object.keys(peakHours).length > 0
+          ? Object.keys(peakHours).reduce((a, b) =>
+              (peakHours[a] || 0) > (peakHours[b] || 0) ? a : b
+            )
+          : "N/A",
     };
 
     return NextResponse.json(stats, { status: 200 });

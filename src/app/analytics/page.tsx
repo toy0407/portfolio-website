@@ -515,7 +515,7 @@ export default function AnalyticsDashboard() {
                       Total Visits
                     </p>
                     <p className="text-4xl font-bold text-blue-600">
-                      {data.totalVisits}
+                      {data?.totalVisits ?? "-"}
                     </p>
                   </CardBody>
                 </Card>
@@ -526,7 +526,7 @@ export default function AnalyticsDashboard() {
                       Resume Clicks
                     </p>
                     <p className="text-4xl font-bold text-green-600">
-                      {data.totalResumeClicks}
+                      {data?.totalResumeClicks ?? "-"}
                     </p>
                   </CardBody>
                 </Card>
@@ -537,7 +537,7 @@ export default function AnalyticsDashboard() {
                       Unique Visitors
                     </p>
                     <p className="text-4xl font-bold text-purple-600">
-                      {data.uniqueVisitors}
+                      {data?.uniqueVisitors ?? "-"}
                     </p>
                   </CardBody>
                 </Card>
@@ -548,7 +548,7 @@ export default function AnalyticsDashboard() {
                       Conversion Rate
                     </p>
                     <p className="text-4xl font-bold text-orange-600">
-                      {data.conversionRate}
+                      {data?.conversionRate ?? "-"}
                     </p>
                   </CardBody>
                 </Card>
@@ -561,7 +561,9 @@ export default function AnalyticsDashboard() {
                     <p className="text-sm text-muted-foreground mb-2">
                       Top Browser
                     </p>
-                    <p className="text-2xl font-bold">{data.topBrowser}</p>
+                    <p className="text-2xl font-bold">
+                      {data?.topBrowser ?? "-"}
+                    </p>
                   </CardBody>
                 </Card>
 
@@ -571,7 +573,7 @@ export default function AnalyticsDashboard() {
                       Top Device
                     </p>
                     <p className="text-2xl font-bold capitalize">
-                      {data.topDevice}
+                      {data?.topDevice ?? "-"}
                     </p>
                   </CardBody>
                 </Card>
@@ -582,7 +584,7 @@ export default function AnalyticsDashboard() {
                       Most Active Hour
                     </p>
                     <p className="text-2xl font-bold">
-                      {data.mostActiveHour}:00
+                      {data?.mostActiveHour ?? "-"} hour
                     </p>
                   </CardBody>
                 </Card>
@@ -705,7 +707,7 @@ export default function AnalyticsDashboard() {
                   <p className="text-sm text-muted-foreground">
                     Average Sessions Per Day:{" "}
                     <span className="font-bold text-foreground">
-                      {data.averageSessionsPerDay.toFixed(2)}
+                      {data.averageSessionsPerDay?.toFixed(2)}
                     </span>
                   </p>
                 </CardBody>
