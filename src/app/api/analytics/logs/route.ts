@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import { join } from "path";
@@ -42,7 +44,7 @@ export async function GET(request: NextRequest) {
 
     // Sort by timestamp descending (newest first)
     logs.sort(
-      (a: any, b: any) =>
+      (a: { timestamp: string }, b: { timestamp: string }) =>
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
 

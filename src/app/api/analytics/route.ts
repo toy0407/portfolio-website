@@ -6,30 +6,35 @@ import { existsSync } from "fs";
 interface AnalyticsMetadata {
   totalVisits: number;
   totalResumeClicks: number;
-  uniqueVisitors: Set<string>;
-  deviceBreakdown: {
-    mobile: number;
-    tablet: number;
-    desktop: number;
-  };
+  uniqueVisitors: string[];
+  deviceBreakdown: { mobile: number; tablet: number; desktop: number };
   browserBreakdown: Record<string, number>;
   timezoneBreakdown: Record<string, number>;
   referrerBreakdown: Record<string, number>;
-  lastUpdated: string;
-  peakHours: Record<string, number>;
-  averageSessionsPerDay: number;
+  peakHours: Record<string | number, number>;
   topCountries: Record<string, number>;
+  lastUpdated: string;
+  averageSessionsPerDay?: number;
+}
+interface EnrichedData {
+  eventType: string;
+  ip?: string;
+  deviceType?: string;
+  browserInfo?: { name?: string };
+  timezone?: string;
+  timestamp: string;
+  referrer?: string;
 }
 
 async function updateMetadata(
   analyticsDir: string,
-  enrichedData: any
+  enrichedData: EnrichedData
 ): Promise<void> {
   const metadataPath = join(analyticsDir, "metadata.json");
   const allEventsPath = join(analyticsDir, "all-events.json");
 
   // Read existing metadata or create new
-  let metadata: any = {
+  let metadata: AnalyticsMetadata = {
     totalVisits: 0,
     totalResumeClicks: 0,
     uniqueVisitors: [],
@@ -48,7 +53,7 @@ async function updateMetadata(
   }
 
   // Read all events
-  let allEvents = [];
+  let allEvents: { timestamp: string }[] = [];
   if (existsSync(allEventsPath)) {
     const eventsContent = await readFile(allEventsPath, "utf-8");
     allEvents = JSON.parse(eventsContent);
@@ -62,27 +67,38 @@ async function updateMetadata(
   }
 
   // Track unique visitors by IP
-  if (!metadata.uniqueVisitors.includes(enrichedData.ip)) {
+  if (enrichedData.ip && !metadata.uniqueVisitors.includes(enrichedData.ip)) {
     metadata.uniqueVisitors.push(enrichedData.ip);
   }
 
   // Update device breakdown
-  metadata.deviceBreakdown[enrichedData.deviceType]++;
+  if (enrichedData.deviceType) {
+    const deviceKey =
+      enrichedData.deviceType as keyof typeof metadata.deviceBreakdown;
+    if (deviceKey in metadata.deviceBreakdown) {
+      metadata.deviceBreakdown[deviceKey] =
+        (metadata.deviceBreakdown[deviceKey] || 0) + 1;
+    }
+  }
 
   // Update browser breakdown
-  const browserName = enrichedData.browserInfo.name;
+  const browserName = enrichedData.browserInfo?.name || "unknown";
   metadata.browserBreakdown[browserName] =
     (metadata.browserBreakdown[browserName] || 0) + 1;
 
   // Update timezone breakdown
-  metadata.timezoneBreakdown[enrichedData.timezone] =
-    (metadata.timezoneBreakdown[enrichedData.timezone] || 0) + 1;
+  if (enrichedData.timezone) {
+    metadata.timezoneBreakdown[enrichedData.timezone] =
+      (metadata.timezoneBreakdown[enrichedData.timezone] || 0) + 1;
+  }
 
   // Update referrer breakdown
   const referrer =
     enrichedData.referrer === "direct"
       ? "direct"
-      : new URL(enrichedData.referrer).hostname || "unknown";
+      : enrichedData.referrer
+      ? new URL(String(enrichedData.referrer)).hostname || "unknown"
+      : "unknown";
   metadata.referrerBreakdown[referrer] =
     (metadata.referrerBreakdown[referrer] || 0) + 1;
 

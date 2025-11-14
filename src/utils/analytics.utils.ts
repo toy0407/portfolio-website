@@ -35,12 +35,18 @@ export async function collectUserAnalytics(
   // Get browser info
   const browserInfo = getBrowserInfo(userAgent);
 
+  // Define an extended navigator type to access experimental fields safely
+  type NavigatorWithExtras = Navigator & {
+    connection?: { effectiveType?: string };
+    deviceMemory?: number;
+  };
+
   // Get connection info if available
-  const connection = (navigator as any).connection;
+  const connection = (navigator as NavigatorWithExtras).connection;
   const connectionType = connection?.effectiveType || "unknown";
 
   // Get device memory if available
-  const deviceMemory = (navigator as any).deviceMemory || undefined;
+  const deviceMemory = (navigator as NavigatorWithExtras).deviceMemory || undefined;
 
   // Get hardware concurrency (number of logical processors)
   const hardwareConcurrency = navigator.hardwareConcurrency || undefined;

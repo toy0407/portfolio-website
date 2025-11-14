@@ -1,8 +1,9 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { Card, CardBody, CardHeader, Button, Tabs, Tab } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Tabs, Tab } from "@nextui-org/react";
 import {
   BarChart,
   Bar,
@@ -71,8 +72,9 @@ const COLORS = [
   "#FFC658",
 ];
 
+import React from "react";
+
 export default function AnalyticsDashboard() {
-  const searchParams = useSearchParams();
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [allEvents, setAllEvents] = useState<EventLog[]>([]);
   const [pageVisits, setPageVisits] = useState<EventLog[]>([]);
@@ -82,7 +84,10 @@ export default function AnalyticsDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
-  const secret = searchParams.get("secret");
+  const secret =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("secret")
+      : null;
 
   useEffect(() => {
     if (!secret) {
@@ -111,13 +116,15 @@ export default function AnalyticsDashboard() {
 
   const fetchLogs = async (type: "all" | "page_visits" | "resume_clicks") => {
     if (!secret) return;
-    
+
     try {
-      const response = await fetch(`/api/analytics/logs?secret=${secret}&type=${type}`);
+      const response = await fetch(
+        `/api/analytics/logs?secret=${secret}&type=${type}`
+      );
       if (!response.ok) throw new Error("Failed to fetch logs");
-      
+
       const logs = await response.json();
-      
+
       if (type === "all") setAllEvents(logs);
       else if (type === "page_visits") setPageVisits(logs);
       else if (type === "resume_clicks") setResumeClicks(logs);
@@ -126,9 +133,9 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  const handleTabChange = (key: any) => {
-    setActiveTab(key);
-    
+  const handleTabChange = (key: React.Key) => {
+    setActiveTab(String(key));
+
     // Fetch logs when switching to log tabs
     if (key === "all-logs" && allEvents.length === 0) {
       fetchLogs("all");
@@ -174,15 +181,18 @@ export default function AnalyticsDashboard() {
             <tbody>
               {logs.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="p-8 text-center text-muted-foreground">
+                  <td
+                    colSpan={7}
+                    className="p-8 text-center text-muted-foreground"
+                  >
                     No data available
                   </td>
                 </tr>
               ) : (
                 logs.map((log, index) => (
                   <>
-                    <tr 
-                      key={index} 
+                    <tr
+                      key={index}
                       className="border-b hover:bg-muted/50 cursor-pointer transition-colors"
                       onClick={() => toggleRow(index)}
                     >
@@ -222,43 +232,67 @@ export default function AnalyticsDashboard() {
                         <td colSpan={7} className="p-6">
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <div>
-                              <h4 className="font-semibold mb-2 text-sm">Event Information</h4>
+                              <h4 className="font-semibold mb-2 text-sm">
+                                Event Information
+                              </h4>
                               <div className="space-y-1 text-xs">
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Event Type:</span>
-                                  <span className="font-mono">{log.eventType}</span>
+                                  <span className="text-muted-foreground">
+                                    Event Type:
+                                  </span>
+                                  <span className="font-mono">
+                                    {log.eventType}
+                                  </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Timestamp:</span>
-                                  <span className="font-mono">{log.timestamp}</span>
+                                  <span className="text-muted-foreground">
+                                    Timestamp:
+                                  </span>
+                                  <span className="font-mono">
+                                    {log.timestamp}
+                                  </span>
                                 </div>
                               </div>
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2 text-sm">Device Details</h4>
+                              <h4 className="font-semibold mb-2 text-sm">
+                                Device Details
+                              </h4>
                               <div className="space-y-1 text-xs">
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Type:</span>
-                                  <span className="capitalize">{log.deviceType}</span>
+                                  <span className="text-muted-foreground">
+                                    Type:
+                                  </span>
+                                  <span className="capitalize">
+                                    {log.deviceType}
+                                  </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Platform:</span>
+                                  <span className="text-muted-foreground">
+                                    Platform:
+                                  </span>
                                   <span>{log.platform}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Resolution:</span>
+                                  <span className="text-muted-foreground">
+                                    Resolution:
+                                  </span>
                                   <span>{log.screenResolution}</span>
                                 </div>
                                 {log.deviceMemory && (
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Memory:</span>
+                                    <span className="text-muted-foreground">
+                                      Memory:
+                                    </span>
                                     <span>{log.deviceMemory} GB</span>
                                   </div>
                                 )}
                                 {log.hardwareConcurrency && (
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">CPU Cores:</span>
+                                    <span className="text-muted-foreground">
+                                      CPU Cores:
+                                    </span>
                                     <span>{log.hardwareConcurrency}</span>
                                   </div>
                                 )}
@@ -266,20 +300,33 @@ export default function AnalyticsDashboard() {
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2 text-sm">Browser & Network</h4>
+                              <h4 className="font-semibold mb-2 text-sm">
+                                Browser & Network
+                              </h4>
                               <div className="space-y-1 text-xs">
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Browser:</span>
-                                  <span>{log.browserInfo.name} v{log.browserInfo.version}</span>
+                                  <span className="text-muted-foreground">
+                                    Browser:
+                                  </span>
+                                  <span>
+                                    {log.browserInfo.name} v
+                                    {log.browserInfo.version}
+                                  </span>
                                 </div>
                                 {log.connectionType && (
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Connection:</span>
-                                    <span className="uppercase">{log.connectionType}</span>
+                                    <span className="text-muted-foreground">
+                                      Connection:
+                                    </span>
+                                    <span className="uppercase">
+                                      {log.connectionType}
+                                    </span>
                                   </div>
                                 )}
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">User Agent:</span>
+                                  <span className="text-muted-foreground">
+                                    User Agent:
+                                  </span>
                                 </div>
                                 <div className="font-mono text-[10px] break-all bg-background/50 p-2 rounded">
                                   {log.userAgent}
@@ -288,34 +335,48 @@ export default function AnalyticsDashboard() {
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2 text-sm">Location & Language</h4>
+                              <h4 className="font-semibold mb-2 text-sm">
+                                Location & Language
+                              </h4>
                               <div className="space-y-1 text-xs">
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Timezone:</span>
+                                  <span className="text-muted-foreground">
+                                    Timezone:
+                                  </span>
                                   <span>{log.timezone}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Language:</span>
+                                  <span className="text-muted-foreground">
+                                    Language:
+                                  </span>
                                   <span>{log.language}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="text-muted-foreground">IP Address:</span>
+                                  <span className="text-muted-foreground">
+                                    IP Address:
+                                  </span>
                                   <span className="font-mono">{log.ip}</span>
                                 </div>
                               </div>
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2 text-sm">Navigation</h4>
+                              <h4 className="font-semibold mb-2 text-sm">
+                                Navigation
+                              </h4>
                               <div className="space-y-1 text-xs">
                                 <div>
-                                  <span className="text-muted-foreground">Page URL:</span>
+                                  <span className="text-muted-foreground">
+                                    Page URL:
+                                  </span>
                                   <div className="font-mono text-[10px] break-all bg-background/50 p-2 rounded mt-1">
                                     {log.pageUrl}
                                   </div>
                                 </div>
                                 <div>
-                                  <span className="text-muted-foreground">Referrer:</span>
+                                  <span className="text-muted-foreground">
+                                    Referrer:
+                                  </span>
                                   <div className="font-mono text-[10px] break-all bg-background/50 p-2 rounded mt-1">
                                     {log.referrer}
                                   </div>
@@ -325,18 +386,28 @@ export default function AnalyticsDashboard() {
 
                             {log.headers && (
                               <div>
-                                <h4 className="font-semibold mb-2 text-sm">Headers</h4>
+                                <h4 className="font-semibold mb-2 text-sm">
+                                  Headers
+                                </h4>
                                 <div className="space-y-1 text-xs">
                                   {log.headers.acceptLanguage && (
                                     <div className="flex justify-between">
-                                      <span className="text-muted-foreground">Accept-Language:</span>
-                                      <span className="text-[10px]">{log.headers.acceptLanguage}</span>
+                                      <span className="text-muted-foreground">
+                                        Accept-Language:
+                                      </span>
+                                      <span className="text-[10px]">
+                                        {log.headers.acceptLanguage}
+                                      </span>
                                     </div>
                                   )}
                                   {log.headers.acceptEncoding && (
                                     <div className="flex justify-between">
-                                      <span className="text-muted-foreground">Accept-Encoding:</span>
-                                      <span className="text-[10px]">{log.headers.acceptEncoding}</span>
+                                      <span className="text-muted-foreground">
+                                        Accept-Encoding:
+                                      </span>
+                                      <span className="text-[10px]">
+                                        {log.headers.acceptEncoding}
+                                      </span>
                                     </div>
                                   )}
                                 </div>
@@ -436,186 +507,209 @@ export default function AnalyticsDashboard() {
         >
           <Tab key="overview" title="Overview">
             <div>
-            {/* Key Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border-blue-500/20">
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">Total Visits</p>
-              <p className="text-4xl font-bold text-blue-600">
-                {data.totalVisits}
-              </p>
-            </CardBody>
-          </Card>
+              {/* Key Metrics */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <Card className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border-blue-500/20">
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Total Visits
+                    </p>
+                    <p className="text-4xl font-bold text-blue-600">
+                      {data.totalVisits}
+                    </p>
+                  </CardBody>
+                </Card>
 
-          <Card className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-green-500/20">
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">
-                Resume Clicks
-              </p>
-              <p className="text-4xl font-bold text-green-600">
-                {data.totalResumeClicks}
-              </p>
-            </CardBody>
-          </Card>
+                <Card className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-green-500/20">
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Resume Clicks
+                    </p>
+                    <p className="text-4xl font-bold text-green-600">
+                      {data.totalResumeClicks}
+                    </p>
+                  </CardBody>
+                </Card>
 
-          <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">
-                Unique Visitors
-              </p>
-              <p className="text-4xl font-bold text-purple-600">
-                {data.uniqueVisitors}
-              </p>
-            </CardBody>
-          </Card>
+                <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Unique Visitors
+                    </p>
+                    <p className="text-4xl font-bold text-purple-600">
+                      {data.uniqueVisitors}
+                    </p>
+                  </CardBody>
+                </Card>
 
-          <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border-orange-500/20">
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">
-                Conversion Rate
-              </p>
-              <p className="text-4xl font-bold text-orange-600">
-                {data.conversionRate}
-              </p>
-            </CardBody>
-          </Card>
-        </div>
+                <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/5 border-orange-500/20">
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Conversion Rate
+                    </p>
+                    <p className="text-4xl font-bold text-orange-600">
+                      {data.conversionRate}
+                    </p>
+                  </CardBody>
+                </Card>
+              </div>
 
-        {/* Secondary Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card>
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">Top Browser</p>
-              <p className="text-2xl font-bold">{data.topBrowser}</p>
-            </CardBody>
-          </Card>
+              {/* Secondary Metrics */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <Card>
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Top Browser
+                    </p>
+                    <p className="text-2xl font-bold">{data.topBrowser}</p>
+                  </CardBody>
+                </Card>
 
-          <Card>
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">Top Device</p>
-              <p className="text-2xl font-bold capitalize">{data.topDevice}</p>
-            </CardBody>
-          </Card>
+                <Card>
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Top Device
+                    </p>
+                    <p className="text-2xl font-bold capitalize">
+                      {data.topDevice}
+                    </p>
+                  </CardBody>
+                </Card>
 
-          <Card>
-            <CardBody className="text-center p-6">
-              <p className="text-sm text-muted-foreground mb-2">
-                Most Active Hour
-              </p>
-              <p className="text-2xl font-bold">{data.mostActiveHour}:00</p>
-            </CardBody>
-          </Card>
-        </div>
+                <Card>
+                  <CardBody className="text-center p-6">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Most Active Hour
+                    </p>
+                    <p className="text-2xl font-bold">
+                      {data.mostActiveHour}:00
+                    </p>
+                  </CardBody>
+                </Card>
+              </div>
 
-        {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Device Breakdown */}
-          <Card>
-            <CardHeader>
-              <h3 className="text-xl font-semibold">Device Distribution</h3>
-            </CardHeader>
-            <CardBody>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={deviceData}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }: any) =>
-                      `${name}: ${(percent * 100).toFixed(0)}%`
-                    }
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {deviceData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </CardBody>
-          </Card>
+              {/* Charts */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Device Breakdown */}
+                <Card>
+                  <CardHeader>
+                    <h3 className="text-xl font-semibold">
+                      Device Distribution
+                    </h3>
+                  </CardHeader>
+                  <CardBody>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <PieChart>
+                        <Pie
+                          data={deviceData}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          label={({
+                            name,
+                            percent,
+                          }: {
+                            name?: string;
+                            percent?: number;
+                          }) => {
+                            const pct = percent ?? 0;
+                            return `${name ?? "Unknown"}: ${(pct * 100).toFixed(
+                              0
+                            )}%`;
+                          }}
+                          outerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                        >
+                          {deviceData.map((entry, index) => (
+                            <Cell
+                              key={`cell-${index}`}
+                              fill={COLORS[index % COLORS.length]}
+                            />
+                          ))}
+                        </Pie>
+                        <Tooltip />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </CardBody>
+                </Card>
 
-          {/* Browser Breakdown */}
-          <Card>
-            <CardHeader>
-              <h3 className="text-xl font-semibold">Browser Usage</h3>
-            </CardHeader>
-            <CardBody>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={browserData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#8884d8" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardBody>
-          </Card>
+                {/* Browser Breakdown */}
+                <Card>
+                  <CardHeader>
+                    <h3 className="text-xl font-semibold">Browser Usage</h3>
+                  </CardHeader>
+                  <CardBody>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart data={browserData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Bar dataKey="value" fill="#8884d8" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardBody>
+                </Card>
 
-          {/* Peak Hours */}
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <h3 className="text-xl font-semibold">
-                Hourly Traffic Distribution
-              </h3>
-            </CardHeader>
-            <CardBody>
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={hourlyData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="hour" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="visits"
-                    stroke="#8884d8"
-                    strokeWidth={2}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardBody>
-          </Card>
+                {/* Peak Hours */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <h3 className="text-xl font-semibold">
+                      Hourly Traffic Distribution
+                    </h3>
+                  </CardHeader>
+                  <CardBody>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <LineChart data={hourlyData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="hour" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="visits"
+                          stroke="#8884d8"
+                          strokeWidth={2}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </CardBody>
+                </Card>
 
-          {/* Top Referrers */}
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <h3 className="text-xl font-semibold">Top Referral Sources</h3>
-            </CardHeader>
-            <CardBody>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={referrerData} layout="vertical">
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis dataKey="name" type="category" width={150} />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#82ca9d" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardBody>
-          </Card>
-        </div>
+                {/* Top Referrers */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <h3 className="text-xl font-semibold">
+                      Top Referral Sources
+                    </h3>
+                  </CardHeader>
+                  <CardBody>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <BarChart data={referrerData} layout="vertical">
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis type="number" />
+                        <YAxis dataKey="name" type="category" width={150} />
+                        <Tooltip />
+                        <Bar dataKey="value" fill="#82ca9d" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardBody>
+                </Card>
+              </div>
 
-        {/* Footer Stats */}
-        <Card className="mt-8">
-          <CardBody className="text-center p-6">
-            <p className="text-sm text-muted-foreground">
-              Average Sessions Per Day:{" "}
-              <span className="font-bold text-foreground">
-                {data.averageSessionsPerDay.toFixed(2)}
-              </span>
-            </p>
-          </CardBody>
-        </Card>
+              {/* Footer Stats */}
+              <Card className="mt-8">
+                <CardBody className="text-center p-6">
+                  <p className="text-sm text-muted-foreground">
+                    Average Sessions Per Day:{" "}
+                    <span className="font-bold text-foreground">
+                      {data.averageSessionsPerDay.toFixed(2)}
+                    </span>
+                  </p>
+                </CardBody>
+              </Card>
             </div>
           </Tab>
 

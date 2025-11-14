@@ -1,14 +1,11 @@
 import React from "react";
 
 import { cn } from "@/utils/tailwind.utils";
-interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type RainbowButtonProps = React.PropsWithChildren<
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>;
 
-export function RainbowButton({
-  children,
-  className,
-  ...props
-}: RainbowButtonProps) {
+export function RainbowButton({ children, className, ...props }: RainbowButtonProps) {
   return (
     <button
       className={cn(

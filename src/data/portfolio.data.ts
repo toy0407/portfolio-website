@@ -1,5 +1,3 @@
-import { desc } from "framer-motion/client";
-
 const email = "bose.suvro@gmail.com";
 const phone = "+91 8250-937-819";
 

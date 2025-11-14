@@ -7,13 +7,10 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/react";
-import { useTheme } from "next-themes";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { portfolioData } from "@/data/portfolio.data";
 import Image from "next/image";
@@ -28,16 +25,14 @@ export default function CustomNavBar() {
 
   // State to handle active nav item and drawer/dialog open state
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  // State to change theme (dark/light)
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
   // State to open/close menu (in smaller screens)
   const [isMenuOpen, setIsMenuOpen] = React.useReducer((val) => !val, false);
 
   const handleNavItemClick = (item: string) => setActiveItem(item);
 
-  const toggleTheme = () =>
-    theme === "dark" ? setTheme("light") : setTheme("dark");
-
+  // const toggleTheme = () =>
+  //     theme === "dark" ? setTheme("light") : setTheme("dark");
   const handleResumeClick = async () => {
     // Collect analytics data for resume click
     const analytics = await collectUserAnalytics("resume_click");

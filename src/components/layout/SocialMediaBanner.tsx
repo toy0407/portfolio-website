@@ -28,7 +28,7 @@ export const SocialMediaBanner = () => {
       transition={{ delay: 1, duration: 0.5 }}
       className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4"
     >
-      {portfolioData.socials.map((social, index) => {
+      {portfolioData.socials.map((social) => {
         const Icon = iconMap[social.icon as keyof typeof iconMap];
         return (
           <motion.a

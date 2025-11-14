@@ -19,7 +19,7 @@ export function AnalyticsTracker() {
 
     hasTracked.current = true;
     trackPageVisit();
-  }, [pathname]);
+  }, [pathname, trackablePages]);
 
   return null;
 }
