@@ -250,7 +250,7 @@ function ProjectCard({
 }
 
 export default function ProjectSection() {
-  const projects = (portfolioData as any).projects as
+  const projects = portfolioData.projects as
     | {
         title: string;
         subtitle: string;

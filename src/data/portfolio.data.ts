@@ -53,6 +53,21 @@ export const portfolioData = {
     resume:
       "https://drive.google.com/file/d/1mnbc9_YAspMWtGrSG3luoA7InHqL3NW8/view?usp=drive_link",
   },
+  about: {
+    title: "About Me",
+    subtitle: "Builder of scalable systems & delightful user experiences.",
+    bio: [
+      "I'm a full-stack engineer focused on crafting resilient backend services and immersive frontend interfaces.",
+      "Across my journey I've driven performance improvements, mentored teams, and shipped products that balance clean architecture with rapid iteration.",
+      "My current interests include distributed event streaming, AI-assisted developer tooling, and design systems that scale with teams.",
+    ],
+    quickFacts: {
+      location: "India",
+      experience: "3+ Years",
+      focus: "Full-Stack Engineering",
+      currently: "Exploring AI-assisted architectures",
+    },
+  },
   analytics: {
     trackablePages: ["/"],
   },
@@ -150,7 +165,7 @@ export const portfolioData = {
         title: "E-Commerce Platform",
         description:
           "A full-stack e-commerce solution with real-time inventory management, payment processing, and admin dashboard. Built with modern React architecture and scalable backend.",
-        image: "/assets/projects/ecommerce.jpg",
+        // image: "/assets/projects/ecommerce.jpg",
         technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
         sourceCode: "https://github.com/toy0407/ecommerce-platform",
         liveUrl: "https://ecommerce-demo.vercel.app",
@@ -161,7 +176,7 @@ export const portfolioData = {
         title: "AI Chat Assistant",
         description:
           "An intelligent chatbot powered by OpenAI GPT-4 with custom knowledge base integration, conversation memory, and real-time streaming responses.",
-        image: "/assets/projects/chat-ai.jpg",
+        // image: "/assets/projects/chat-ai.jpg",
         technologies: [
           "Next.js",
           "OpenAI API",
@@ -178,7 +193,7 @@ export const portfolioData = {
         title: "Task Management App",
         description:
           "A collaborative project management tool with real-time updates, team workspaces, and advanced filtering. Features drag-and-drop Kanban boards and time tracking.",
-        image: "/assets/projects/task-manager.jpg",
+        // image: "/assets/projects/task-manager.jpg",
         technologies: ["Flutter", "Firebase", "Node.js", "WebSockets"],
         sourceCode: "https://github.com/toy0407/task-manager",
         liveUrl: null,
@@ -189,7 +204,7 @@ export const portfolioData = {
         title: "Analytics Dashboard",
         description:
           "A comprehensive analytics platform with interactive charts, real-time data visualization, and custom reporting. Handles millions of data points with optimized performance.",
-        image: "/assets/projects/analytics.jpg",
+        // image: "/assets/projects/analytics.jpg",
         technologies: ["React", "D3.js", "Express", "Redis", "Docker"],
         sourceCode: "https://github.com/toy0407/analytics-dashboard",
         liveUrl: "https://analytics-demo.vercel.app",

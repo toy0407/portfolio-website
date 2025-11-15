@@ -1,130 +1,107 @@
 "use client";
 
 import { portfolioData } from "@/data/portfolio.data";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "../ui/button";
+import { WavyBackground } from "../ui/wavy-background";
 
 export default function Hero() {
   const heroRef = useRef(null);
-
-  // track scroll only within hero section
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Move image one viewport height down as you scroll through hero
-  const pictureY = useTransform(scrollYProgress, [0, 1], ["0vh", "100vh"]);
-  const pictureScale = useTransform(scrollYProgress, [0, 1], [1, 0.65]);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-between max-w-[1368px] mx-auto px-8 overflow-visible"
-    >
-      {/* Text content */}
-      {/* <div className="flex-1 z-10">
-        <h1 className="text-5xl font-bold">Welcome to My Portfolio</h1>
-        <p className="mt-4">Explore my work and journey in tech.</p>
-      </div> */}
+    <section ref={heroRef} className="relative w-full overflow-hidden">
+      <WavyBackground
+        className="absolute inset-0"
+        containerClassName="absolute inset-0"
+        waveOpacity={0.3}
+        blur={12}
+        speed="slow"
+      />
 
-      <div className="flex-1 mx-auto px-4 relative z-10">
+      {/* Content wrapper */}
+      <div className="relative z-10 min-h-screen flex items-center justify-center max-w-[1368px] mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="w-full text-center space-y-8"
         >
-          <motion.h1
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.2, duration: 0.8 },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-            className="text-5xl md:text-7xl font-sans font-semibold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient"
+          {/* Main heading with enhanced visual hierarchy */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.8, type: "spring" }}
+            className="relative inline-block"
           >
-            {portfolioData.personal.name.split("").map((char, index) => (
-              <motion.span
-                key={`${char}-${index}`}
-                variants={{
-                  hidden: { opacity: 0, y: 50 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      damping: 12,
-                      stiffness: 100,
-                      delay: 0.2 + index * 0.05,
-                    },
-                  },
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.h1>
+            {/* Glow effect behind text */}
+            <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-full" />
 
-          <motion.h2
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.4, duration: 0.8 },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-            className="text-2xl md:text-4xl text-foreground mb-4"
-          >
-            {portfolioData.personal.title.split("").map((char, index) => (
-              <motion.span
-                key={`${char}-${index}`}
-                variants={{
-                  hidden: { opacity: 0, y: 50 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      damping: 12,
-                      stiffness: 100,
-                      delay: 0.4 + index * 0.03,
-                    },
-                  },
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.h2>
+            <motion.h1
+              className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-4"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
+                backgroundSize: "200% 200%",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              {portfolioData.personal.name.split("").map((char, index) => (
+                <motion.span
+                  key={`${char}-${index}`}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    type: "spring",
+                    damping: 12,
+                    stiffness: 100,
+                    delay: 0.3 + index * 0.04,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
-          >
-            {/* {portfolioData.personal.tagline} */}
-          </motion.p>
-
+          {/* Subtitle in glassmorphic pill */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex gap-4 justify-start flex-wrap"
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="flex justify-center mb-6"
+          >
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-card/40 backdrop-blur-apple shadow-subtle">
+              <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-base md:text-lg text-foreground font-medium">
+                {portfolioData.personal.title}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed"
+          >
+            Crafting resilient systems and delightful experiences through clean
+            architecture and thoughtful design.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="flex gap-4 justify-center flex-wrap"
           >
             <motion.div
               whileHover={{ scale: 1.02, y: -2 }}
@@ -134,7 +111,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-accent to-accent/90 text-accent-foreground hover:from-accent/90 hover:to-accent/80 shadow-gold-glow hover:shadow-elevated transition-all duration-300 font-medium"
+                className="bg-gradient-to-r from-accent to-accent/90 text-accent-foreground hover:from-accent/90 hover:to-accent/80 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300 font-semibold text-base px-8"
               >
                 Get in Touch
               </Button>
@@ -148,7 +125,7 @@ export default function Hero() {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("projects")}
-                className="border-2 border-primary/30 bg-card/80 backdrop-blur-apple text-foreground hover:bg-primary/10 hover:border-primary/50 hover:text-foreground transition-all duration-300 font-medium shadow-subtle hover:shadow-elevated"
+                className="border-2 border-white/20 bg-card/60 backdrop-blur-apple text-foreground hover:bg-card/80 hover:border-white/30 transition-all duration-300 font-semibold text-base px-8 shadow-subtle hover:shadow-elevated"
               >
                 View My Work
               </Button>
@@ -157,35 +134,24 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Picture */}
+      {/* Scroll indicator */}
       <motion.div
-        className="flex-1 flex justify-center items-center relative z-20"
-        style={{
-          y: pictureY,
-          scale: pictureScale,
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 50 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8, type: "spring" }}
-          className="relative w-full max-w-[400px] md:max-w-[500px] group"
-          style={{ perspective: "1000px" }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2 cursor-pointer"
+          onClick={() => scrollToSection("about")}
         >
-          <div
-            className="relative w-full h-full transition-transform duration-500 rounded-lg"
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-md group-hover:blur-lg transition-all duration-500"></div>
-            <div className="relative w-full h-full bg-background rounded-full overflow-hidden">
-              <Image
-                src="/assets/profile.png"
-                alt="My Photo"
-                width={800}
-                height={800}
-                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
+          <span className="text-xs text-muted-foreground uppercase tracking-wider">
+            Scroll
+          </span>
+          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-muted-foreground/50 rounded-full" />
           </div>
         </motion.div>
       </motion.div>

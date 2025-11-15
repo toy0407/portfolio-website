@@ -6,9 +6,9 @@ import {
   LuLinkedin,
   LuTwitter,
   LuMail,
-  LuCodeXml,
   LuInstagram,
 } from "react-icons/lu";
+import { SiLeetcode } from "react-icons/si";
 import { portfolioData } from "@/data/portfolio.data";
 
 const iconMap = {
@@ -16,7 +16,7 @@ const iconMap = {
   linkedin: LuLinkedin,
   twitter: LuTwitter,
   mail: LuMail,
-  leetcode: LuCodeXml,
+  leetcode: SiLeetcode,
   instagram: LuInstagram,
 };
 
