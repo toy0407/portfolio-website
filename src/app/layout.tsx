@@ -16,6 +16,9 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Suvro's Portfolio",
   description: "Portfolio Website of Suvro Bose",
+  icons: {
+    icon: "/assets/logo.png",
+  },
 };
 
 export default function RootLayout({
