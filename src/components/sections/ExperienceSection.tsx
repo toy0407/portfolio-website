@@ -59,7 +59,16 @@ export default function ExperienceSection() {
   }
 
   return (
-    <section id="experience" className="relative w-full overflow-clip">
+    <section
+      id="experience"
+      className="min-h-screen relative py-24 px-8 flex items-center justify-center bg-gradient-to-br from-background via-primary/[0.02] to-background overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+      </div>
+      
       <Timeline
         title={portfolioData.timeline.title}
         subtitle={portfolioData.timeline.subtitle}

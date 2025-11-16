@@ -276,14 +276,21 @@ export default function ProjectSection() {
       ref={sectionRef}
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative min-h-screen w-full"
+      className="relative min-h-screen w-full bg-gradient-to-br from-primary/[0.04] via-primary/[0.02] to-background"
     >
       <div className="max-w-[1368px] mx-auto px-8 py-24 relative z-10">
         {/* Section header */}
         <div className="mb-10 md:mb-14">
           <motion.h2
             id="projects-heading"
-            className="text-4xl md:text-6xl font-semibold text-foreground"
+            className="text-4xl md:text-6xl font-semibold pb-2"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--accent)) 50%, hsl(var(--foreground)) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{

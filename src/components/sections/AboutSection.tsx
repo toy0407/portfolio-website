@@ -56,7 +56,7 @@ export default function AboutSection() {
       ref={sectionRef}
       id="about"
       aria-labelledby="about-heading"
-      className="relative min-h-screen w-full"
+      className="min-h-screen relative flex items-center justify-center py-24 px-8 bg-gradient-to-br from-accent/[0.03] via-background to-background"
     >
       <div className="max-w-[1368px] mx-auto px-8 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Text Column */}
@@ -64,7 +64,14 @@ export default function AboutSection() {
           <div className="space-y-6">
             <motion.h2
               id="about-heading"
-              className="text-4xl md:text-6xl font-semibold text-foreground"
+              className="text-4xl md:text-6xl font-semibold pb-2"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--accent)) 50%, hsl(var(--foreground)) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{
@@ -141,7 +148,7 @@ export default function AboutSection() {
                   {/* Key (small, top) */}
                   <span
                     className={cn(
-                      "text-[10px] md:text-xs uppercase tracking-wider font-semibold",
+                      "text-[10px] md:text-xs uppercase tracking-wider font-semibold relative z-10",
                       colors.text
                     )}
                   >
@@ -150,7 +157,7 @@ export default function AboutSection() {
                   {/* Value (large, center) */}
                   <span
                     className={cn(
-                      "text-xl md:text-2xl font-bold leading-tight",
+                      "text-xl md:text-2xl font-bold leading-tight relative z-10",
                       colors.valueText
                     )}
                   >

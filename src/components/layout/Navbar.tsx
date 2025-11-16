@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -28,6 +28,23 @@ export default function CustomNavBar() {
   // const { theme, setTheme } = useTheme();
   // State to open/close menu (in smaller screens)
   const [isMenuOpen, setIsMenuOpen] = React.useReducer((val) => !val, false);
+  // State to track scroll position
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Call once to set initial state
+    handleScroll();
+
+    // Cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNavItemClick = (item: string) => setActiveItem(item);
 
@@ -48,7 +65,11 @@ export default function CustomNavBar() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
-      className="backdrop-blur-apple bg-background/80 border-b border-border/40"
+      className={`fixed transition-all duration-300 ${
+        isScrolled
+          ? "backdrop-blur-apple bg-background/80 border-b border-border/40 shadow-subtle"
+          : "bg-transparent border-b border-transparent"
+      }`}
       classNames={{
         wrapper: "px-4 sm:px-6",
         item: "data-[active=true]:font-semibold",

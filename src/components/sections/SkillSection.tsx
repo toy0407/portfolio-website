@@ -43,12 +43,19 @@ function Pill({
       }}
       whileTap={{ scale: 0.95 }}
       className={cn(
-        "inline-flex items-center gap-2 px-3 py-2 rounded-full cursor-default",
+        "inline-flex items-center gap-2 px-3 py-2 rounded-full cursor-default relative overflow-hidden",
         "bg-card/70 border border-white/10 backdrop-blur-apple",
         "text-sm text-foreground/90 hover:bg-card/90",
         "shadow-subtle hover:shadow-elevated"
       )}
     >
+      {/* Gradient shimmer on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent"
+        initial={{ x: "-100%" }}
+        whileHover={{ x: "100%" }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+      />
       <motion.div
         initial={{ rotate: 0 }}
         whileHover={{ rotate: 360 }}
@@ -201,14 +208,21 @@ export default function SkillSection() {
       ref={sectionRef}
       id="skills"
       aria-labelledby="skills-heading"
-      className="relative min-h-screen w-full"
+      className="relative min-h-screen w-full bg-background"
     >
       <div className="max-w-[1368px] mx-auto px-8 py-24 relative z-10">
         {/* Section header */}
         <div className="mb-10 md:mb-14">
           <motion.h2
             id="skills-heading"
-            className="text-4xl md:text-6xl font-semibold text-foreground"
+            className="text-4xl md:text-6xl font-semibold pb-2"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--accent)) 50%, hsl(var(--foreground)) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{

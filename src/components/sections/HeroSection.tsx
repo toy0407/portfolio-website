@@ -14,7 +14,10 @@ export default function Hero() {
   };
 
   return (
-    <section ref={heroRef} className="relative w-full overflow-hidden">
+    <section
+      ref={heroRef}
+      className="relative w-full max-h-screen overflow-hidden"
+    >
       <WavyBackground
         className="absolute inset-0"
         containerClassName="absolute inset-0"
@@ -42,7 +45,7 @@ export default function Hero() {
             <div className="absolute inset-0 blur-3xl bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-full" />
 
             <motion.h1
-              className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-4"
+              className="relative text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tight mb-4"
               style={{
                 background:
                   "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)))",
@@ -90,10 +93,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            Crafting resilient systems and delightful experiences through clean
-            architecture and thoughtful design.
+            {portfolioData.hero.tagline}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -125,7 +127,7 @@ export default function Hero() {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("projects")}
-                className="border-2 border-white/20 bg-card/60 backdrop-blur-apple text-foreground hover:bg-card/80 hover:border-white/30 transition-all duration-300 font-semibold text-base px-8 shadow-subtle hover:shadow-elevated"
+                className="border-2 border-white/20 bg-card/60 backdrop-blur-apple text-foreground hover:text-foreground hover:bg-card/80 hover:border-white/30 transition-all duration-300 font-semibold text-base px-8 shadow-subtle hover:shadow-elevated"
               >
                 View My Work
               </Button>

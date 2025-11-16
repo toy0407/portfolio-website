@@ -46,7 +46,14 @@ export const Timeline = ({
         className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10"
       >
         <motion.h2
-          className="text-4xl md:text-6xl font-semibold mb-4 text-foreground max-w-4xl"
+          className="text-4xl md:text-6xl font-semibold mb-4 pb-2 max-w-4xl"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--accent)) 50%, hsl(var(--foreground)) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={
             isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
@@ -96,7 +103,7 @@ export const Timeline = ({
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-border to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-primary/60 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
           <motion.div
             style={{

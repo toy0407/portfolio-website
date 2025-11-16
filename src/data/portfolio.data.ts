@@ -46,16 +46,46 @@ const phone = "+91 8250-937-819";
 export const portfolioData = {
   personal: {
     name: "Suvro Bose",
-    title: "Software Engineer | Full-Stack Developer",
+    title: "Software Engineer / Full-Stack Developer",
     email: email,
     phone: phone,
     logo: "/assets/logo.png",
     resume:
       "https://drive.google.com/file/d/1mnbc9_YAspMWtGrSG3luoA7InHqL3NW8/view?usp=drive_link",
   },
+  socials: [
+    {
+      name: "LinkedIn",
+      icon: "linkedin",
+      url: "https://www.linkedin.com/in/toy0407/",
+    },
+    {
+      name: "LeetCode",
+      icon: "leetcode",
+      url: "https://leetcode.com/toy0407",
+    },
+    {
+      name: "GitHub",
+      icon: "github",
+      url: "https://github.com/toy0407",
+    },
+    {
+      name: "Twitter",
+      icon: "twitter",
+      url: "https://twitter.com/toy_0407",
+    },
+    {
+      name: "Instagram",
+      icon: "instagram",
+      url: "https://www.instagram.com/toy0407",
+    },
+  ],
+  hero: {
+    tagline:
+      "Crafting resilient systems and delightful experiences through clean architecture and thoughtful design.",
+  },
   about: {
-    title: "About Me",
-    subtitle: "Builder of scalable systems & delightful user experiences.",
+    title: "My Side of the Story",
     bio: [
       "I'm a full-stack engineer focused on crafting resilient backend services and immersive frontend interfaces.",
       "Across my journey I've driven performance improvements, mentored teams, and shipped products that balance clean architecture with rapid iteration.",
@@ -68,11 +98,8 @@ export const portfolioData = {
       currently: "Exploring AI-assisted architectures",
     },
   },
-  analytics: {
-    trackablePages: ["/"],
-  },
   skills: {
-    title: "My Skills",
+    title: "Tools of My Trade",
     subtitle: "A showcase of my technical proficiencies and tools I excel at.",
     categories: [
       {
@@ -156,7 +183,7 @@ export const portfolioData = {
     ],
   },
   projects: {
-    title: "Featured Projects",
+    title: "Where Ideas became Reality",
     subtitle:
       "A showcase of applications and tools I've built using my skills.",
     data: [
@@ -212,16 +239,6 @@ export const portfolioData = {
       },
     ],
   },
-  navbar: {
-    menuItems: [
-      "About",
-      "Skills",
-      "Projects",
-      "Experience",
-      // "Testimonials",
-      "Contact",
-    ],
-  },
   timeline: {
     title: "My Journey So Far",
     subtitle: "A timeline of my professional milestones.",
@@ -255,38 +272,24 @@ export const portfolioData = {
       },
     ],
   },
-  socials: [
-    {
-      name: "LinkedIn",
-      icon: "linkedin",
-      url: "https://www.linkedin.com/in/toy0407/",
-    },
-    {
-      name: "LeetCode",
-      icon: "leetcode",
-      url: "https://leetcode.com/toy0407",
-    },
-    {
-      name: "GitHub",
-      icon: "github",
-      url: "https://github.com/toy0407",
-    },
-    {
-      name: "Twitter",
-      icon: "twitter",
-      url: "https://twitter.com/toy_0407",
-    },
-    {
-      name: "Instagram",
-      icon: "instagram",
-      url: "https://www.instagram.com/toy0407",
-    },
-  ],
   cta: {
     title: "Let's Build Something Amazing",
     description:
       "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
     buttonText: "Say Hi!",
     buttonLink: `mailto:${email}`,
+  },
+  navbar: {
+    menuItems: [
+      "About",
+      "Skills",
+      "Projects",
+      "Experience",
+      // "Testimonials",
+      "Contact",
+    ],
+  },
+  analytics: {
+    trackablePages: ["/"],
   },
 };

@@ -13,7 +13,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center py-20 px-4 scroll-snap-section"
+      className="min-h-screen flex items-center justify-center py-24 px-8 bg-gradient-to-br from-muted/40 via-muted/20 to-background"
     >
       <div className="container mx-auto max-w-5xl">
         <motion.div
@@ -55,7 +55,14 @@ export const ContactSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-              className="text-4xl md:text-6xl font-semibold mb-4 pb-2 text-center bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text text-transparent"
+              className="text-4xl md:text-6xl font-semibold mb-4 pb-2 text-center"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--accent)) 50%, hsl(var(--foreground)) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               {portfolioData.cta.title}
             </motion.h2>
