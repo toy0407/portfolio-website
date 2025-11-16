@@ -278,7 +278,7 @@ export default function ProjectSection() {
       aria-labelledby="projects-heading"
       className="relative min-h-screen w-full bg-gradient-to-br from-primary/[0.04] via-primary/[0.02] to-background"
     >
-      <div className="max-w-[1368px] mx-auto px-8 py-24 relative z-10">
+      <div className="max-w-[1368px] mx-auto md:py-24 py-12 md:px-8 px-3 relative z-10">
         {/* Section header */}
         <div className="mb-10 md:mb-14">
           <motion.h2

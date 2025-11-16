@@ -13,7 +13,7 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-24 px-8 bg-gradient-to-br from-muted/40 via-muted/20 to-background"
+      className="min-h-screen flex items-center justify-center md:py-24 py-6 md:px-8 px-3 bg-gradient-to-br from-muted/40 via-muted/20 to-background"
     >
       <div className="container mx-auto max-w-5xl">
         <motion.div
@@ -21,7 +21,7 @@ export const ContactSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="relative overflow-hidden rounded-3xl bg-card/80 backdrop-blur-apple p-12 md:p-16 border border-primary/20 shadow-elevated"
+          className="relative overflow-hidden rounded-3xl bg-card/80 backdrop-blur-apple px-3 py-12 md:p-16 border border-primary/20 shadow-elevated"
         >
           {/* Subtle animated background */}
           <motion.div

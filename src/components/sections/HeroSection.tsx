@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full max-h-screen overflow-hidden"
+      className="relative w-full md:max-h-screen overflow-hidden"
     >
       <WavyBackground
         className="absolute inset-0"
@@ -32,7 +32,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-full text-center space-y-8"
+          className="w-full text-center md:space-y-8 space-y-4"
         >
           {/* Main heading with enhanced visual hierarchy */}
           <motion.div
@@ -82,7 +82,7 @@ export default function Hero() {
           >
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-card/40 backdrop-blur-apple shadow-subtle">
               <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-base md:text-lg text-foreground font-medium">
+              <span className="text-xs md:text-lg text-foreground font-medium">
                 {portfolioData.personal.title}
               </span>
             </div>
@@ -141,7 +141,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="md:absolute hidden bottom-8 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

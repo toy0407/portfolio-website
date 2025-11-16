@@ -144,7 +144,7 @@ export default function CustomNavBar() {
               // }}
             >
               <Link
-                className={`w-full px-4 py-3 rounded-xl font-semibold text-2xl transition-all duration-200 hover:bg-muted/80 active:scale-[0.98] ${
+                className={`w-full px-4 py-3 rounded-xl font-extralight text-2xl transition-all duration-200 hover:bg-muted/80 active:scale-[0.98] ${
                   activeItem === item
                     ? "bg-primary/10 text-primary"
                     : "text-foreground"
@@ -155,7 +155,7 @@ export default function CustomNavBar() {
                   setIsMenuOpen();
                 }}
               >
-                {item}
+                {item.toUpperCase()}
               </Link>
             </NavbarMenuItem>
           ))}

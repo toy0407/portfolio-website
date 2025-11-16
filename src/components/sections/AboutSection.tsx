@@ -56,9 +56,9 @@ export default function AboutSection() {
       ref={sectionRef}
       id="about"
       aria-labelledby="about-heading"
-      className="min-h-screen relative flex items-center justify-center py-24 px-8 bg-gradient-to-br from-accent/[0.03] via-background to-background"
+      className="min-h-screen relative flex items-center justify-center md:py-24 py-12 md:px-8 px-3 bg-gradient-to-br from-accent/[0.03] via-background to-background"
     >
-      <div className="max-w-[1368px] mx-auto px-8 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="max-w-[1368px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Text Column */}
         <div className="lg:col-span-7 space-y-10">
           <div className="space-y-6">
