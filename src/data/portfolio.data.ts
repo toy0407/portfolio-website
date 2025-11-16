@@ -42,6 +42,7 @@ import { BiNetworkChart } from "react-icons/bi";
 
 const email = "bose.suvro@gmail.com";
 const phone = "+91 8250-937-819";
+const currentYear = new Date().getFullYear();
 
 export const portfolioData = {
   personal: {
@@ -87,15 +88,14 @@ export const portfolioData = {
   about: {
     title: "My Side of the Story",
     bio: [
-      "I'm a full-stack engineer focused on crafting resilient backend services and immersive frontend interfaces.",
-      "Across my journey I've driven performance improvements, mentored teams, and shipped products that balance clean architecture with rapid iteration.",
-      "My current interests include distributed event streaming, AI-assisted developer tooling, and design systems that scale with teams.",
+      "I’m a software engineer based in Hyderabad, and a 2023 graduate of Jadavpur University, one of India’s top engineering institutions. I love building real-world, scalable products—whether it’s mobile apps, backend systems, or AI-powered experiences—and I enjoy solving problems at both the architectural and implementation level.",
+      "Outside of tech, you’ll find me gaming or cheering through every F1 and MotoGP race—because speed, strategy, and precision inspire me both on and off the track.",
     ],
     quickFacts: {
-      location: "India",
-      experience: "3+ Years",
-      focus: "Full-Stack Engineering",
-      currently: "Exploring AI-assisted architectures",
+      experience: `${currentYear - 2023}+ Years`,
+      projects: "10+ Completed",
+      leetcode: "Top 5% Worldwide",
+      codechef: "4⭐ Rated (1858)",
     },
   },
   skills: {
@@ -247,11 +247,11 @@ export const portfolioData = {
         title: "2023",
         content: {
           title: "Runo",
-          subtitle:
-            "Recognized for my contributions and leadership, I was promoted to Senior Software Engineer at PwC. Took on more complex projects and mentored junior developers.",
+          subtitle: "Software Development Engineer 1",
           description: [
-            "Led a team of 5 engineers to deliver a critical client project ahead of schedule.",
-            "Implemented performance optimizations that improved application speed by 30%.",
+            "Architected and deployed a scalable RBAC system with granular role and permission control, boosting access management efficiency by 60%.",
+            "Automated license and add-on workflows by integrating a Payment Gateway, cutting manual effort by 70% and streamlining revenue operations.",
+            "Built an AI-powered Admin Copilot enabling natural language insights and analytics, improving admin decision speed by 40%.",
           ],
         },
         logo: "/assets/runo.png",
@@ -260,12 +260,11 @@ export const portfolioData = {
         title: "2022",
         content: {
           title: "PwC",
-          subtitle:
-            "Started my journey as a Software Engineer at PwC, focusing on building scalable web applications and contributing to open-source projects.",
+          subtitle: "Technology Consultant Intern",
           description: [
-            "Developed and maintained features for a major client-facing application used by thousands of users.",
-            "Collaborated with cross-functional teams to design and implement new functionalities based on client requirements.",
-            "Participated in code reviews and contributed to improving code quality across the team.",
+            "Developed and implemented a Data Lake for client databases, improving data accessibility and operational efficiency.",
+            "Optimized ETL workflows using AWS Glue, Athena, and S3, enabling scalable analytics and faster data-driven decisions.",
+            "Identified and resolved performance bottlenecks, reducing resource utilization by 80% and boosting system efficiency.",
           ],
         },
         logo: "/assets/pwc.png",

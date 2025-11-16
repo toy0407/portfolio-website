@@ -20,6 +20,7 @@ const iconMap = {
   instagram: LuInstagram,
 };
 
+// TODO: Add mobile version (bottom bar)
 export const SocialMediaBanner = () => {
   return (
     <motion.div

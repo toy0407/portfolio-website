@@ -33,18 +33,18 @@ export default function ExperienceSection() {
     timelineData.push({
       title: item.title,
       content: (
-        <div className="flex items-start gap-4 md:gap-6">
-          <div className="flex-shrink-0 h-20 w-20 md:h-24 md:w-24 rounded-2xl overflow-hidden dark:bg-neutral-50 backdrop-blur-apple border border-primary/10 shadow-subtle">
+        <div className="flex flex-col md:flex-row items-start mt-8 gap-2 md:gap-6">
+          <div className="flex-shrink-0 h-16 w-16 md:h-24 md:w-24 rounded-2xl overflow-hidden dark:bg-neutral-50 backdrop-blur-apple border border-primary/10 shadow-subtle">
             {logo}
           </div>
           <div className="flex-1">
-            <h4 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground">
+            <h4 className="text-2xl md:text-3xl font-semibold mb-0 text-foreground">
               {item.content.title}
             </h4>
             <p className="text-base md:text-lg font-normal text-muted-foreground mb-6 leading-relaxed">
               {item.content.subtitle}
             </p>
-            <ul className="space-y-2 text-sm md:text-base font-normal text-muted-foreground/90 leading-relaxed">
+            <ul className="space-y-2 text-sm md:text-base font-normal text-muted-foreground/75 leading-relaxed">
               {item.content.description.map((desc, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-accent flex-shrink-0">•</span>

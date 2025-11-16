@@ -61,7 +61,7 @@ export default function CustomNavBar() {
 
   return (
     <Navbar
-      shouldHideOnScroll
+      shouldHideOnScroll={!isMenuOpen}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
@@ -125,7 +125,7 @@ export default function CustomNavBar() {
       </NavbarContent>
 
       {/* Mobile Menu */}
-      <NavbarMenu className="pt-6 pb-8 px-4 gap-4 backdrop-blur-xl bg-background/95 border-t border-border/40 transition-all duration-700 ease-out">
+      <NavbarMenu className="pt-6 pb-8 px-4 gap-4 backdrop-blur-xl bg-background/80 border-t border-border/40 transition-all duration-700 ease-out">
         <div className="min-h-[80vh] flex flex-col items-center justify-evenly gap-2">
           {menuItems.map((item, index) => (
             <NavbarMenuItem
